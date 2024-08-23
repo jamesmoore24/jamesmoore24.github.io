@@ -1,12 +1,99 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>FitLink</title>
-  </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        #sidebar {
+            width: 200px;
+            background-color: #f0f0f0;
+            padding: 20px;
+            height: 100vh;
+        }
+        #content {
+            flex: 1;
+            padding: 20px;
+        }
+        .section {
+            display: none;
+        }
+        #home {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="#" onclick="showSection('home')">Home</a></li>
+            <li><a href="#" onclick="showSection('projects')">Projects</a></li>
+            <li><a href="#" onclick="showSection('blog')">Blog</a></li>
+        </ul>
+    </div>
 
-  <body>
-    <h1>
-        Hello
-    </h1>
-  </body>
+    <div id="content">
+        <div id="home" class="section">
+            <h1>Welcome to My Personal Website</h1>
+            <img src="personal-picture.jpeg" alt="Your Name" style="max-width: 200px;">
+            <h2>Biography</h2>
+            <p>Your biography goes here...</p>
+            <h2>Interests</h2>
+            <ul>
+                <li>Interest 1</li>
+                <li>Interest 2</li>
+                <li>Interest 3</li>
+            </ul>
+            <h2>Social Links</h2>
+            <ul>
+                <li><a href="your-social-link-1">Social Platform 1</a></li>
+                <li><a href="your-social-link-2">Social Platform 2</a></li>
+                <li><a href="your-social-link-3">Social Platform 3</a></li>
+            </ul>
+        </div>
+
+        <div id="projects" class="section">
+            <h1>My Projects</h1>
+            <!-- Add your projects here -->
+            <div class="project">
+                <h2>Project 1</h2>
+                <p>Description of Project 1</p>
+            </div>
+            <div class="project">
+                <h2>Project 2</h2>
+                <p>Description of Project 2</p>
+            </div>
+        </div>
+
+        <div id="blog" class="section">
+            <h1>My Blog</h1>
+            <!-- Add your blog posts here -->
+            <div class="blog-post">
+                <h2>Blog Post 1</h2>
+                <p>Content of Blog Post 1</p>
+            </div>
+            <div class="blog-post">
+                <h2>Blog Post 2</h2>
+                <p>Content of Blog Post 2</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.getElementsByClassName('section');
+            for (let i = 0; i < sections.length; i++) {
+                sections[i].style.display = 'none';
+            }
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
+</body>
 </html>
