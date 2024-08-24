@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>My Personal Website</title>
         <style>
-            body, html {
+            body,
+            html {
                 font-family: Arial, sans-serif;
                 margin: 0;
                 padding: 0;
@@ -156,7 +157,11 @@
                 <h2>Navigation</h2>
                 <ul>
                     <li><a href="#" onclick="showSection('home')">Home</a></li>
-                    <li><a href="#" onclick="showSection('projects')">Projects</a></li>
+                    <li>
+                        <a href="#" onclick="showSection('projects')"
+                            >Projects</a
+                        >
+                    </li>
                     <li><a href="#" onclick="showSection('blog')">Blog</a></li>
                 </ul>
             </div>
@@ -164,6 +169,7 @@
             <div id="content">
                 <div id="home" class="section">
                     <h1>Hello world! 👋</h1>
+                    <h1>My name is Jimmy.</h1>
                     <img
                         src="personal-picture.jpeg"
                         alt="Your Name"
@@ -176,7 +182,9 @@
                         4th year at MIT specializing in building AI/ML systems.
                         Currently building some AI tools to help people and
                         businesses save money and time. I spend my free time
-                        <a href="https://www.youtube.com/@AndrejKarpathy">learning about AI</a>, pitching for
+                        <a href="https://www.youtube.com/@AndrejKarpathy"
+                            >learning about AI</a
+                        >, pitching for
                         <a
                             href="https://mitathletics.com/sports/baseball/roster/jimmy-moore/12755"
                         >
@@ -186,8 +194,7 @@
                         <a
                             href="https://www.baa.org/races/baa-half-marathon/registration"
                             >Boston half-marathon</a
-                        >), and making music for the piano (
-                            <a
+                        >), and making music for the piano (<a
                             href="https://www.youtube.com/watch?v=gSkrfzzsjlw"
                             >here's one of my earlier compositions</a
                         >).
@@ -196,6 +203,10 @@
                     <p>
                         (<b>Bolded classes</b> are ones I'm taking/grading/LAing
                         currently)
+                    </p>
+                    <p>
+                        (<i>Italicized classes</i> are some of my personal
+                        favorites :D)
                     </p>
                     <ul>
                         <li>
@@ -216,25 +227,37 @@
                                 quantitatively model how humans think)
                             </b>
                         </li>
-                        <li><b>6.3800 Intro to Inference (Grading)</b></li>
-                        <li><b>6.3900 Intro to Machine Learning (LAing)</b></li>
                         <li>
-                            6.8301 Advances in Computer Vision (made a
-                            <a
-                                href="https://github.com/jamesmoore24/CV-Project/"
-                                >cool ResNet</a
+                            <b><i>6.3800 Intro to Inference (Grading)</i></b>
+                        </li>
+                        <li>
+                            <i
+                                ><b
+                                    >6.3900 Intro to Machine Learning (LAing)</b
+                                ></i
                             >
-                            to help doctors generate and view x-rays)
+                        </li>
+                        <li>
+                            <i>
+                                6.8301 Advances in Computer Vision (made a
+                                <a
+                                    href="https://github.com/jamesmoore24/CV-Project/"
+                                    >cool ResNet</a
+                                >
+                                to help doctors generate and view x-rays)
+                            </i>
                         </li>
                         <li>6.1020 Software Construction</li>
                         <li>6.1800 Computer System Engineering</li>
                         <li>6.1220 Design and Analysis of Algorithms</li>
                         <li>
-                            6.1910 Computational Structures (programmed a
-                            <a href="https://en.wikipedia.org/wiki/RISC-V"
-                                >RISC-V processor</a
+                            <i>
+                                6.1910 Computational Structures (programmed a
+                                <a href="https://en.wikipedia.org/wiki/RISC-V"
+                                    >RISC-V processor</a
+                                >
+                                from scratch)</i
                             >
-                            from scratch)
                         </li>
                         <li>18.C06 Linear Algebra</li>
                         <li>6.1200 Discrete Math</li>
@@ -279,19 +302,34 @@
 
                     <div class="gallery">
                         <div class="gallery-item">
-                            <img src="lucerne.JPG" alt="Description of image 1" />
+                            <img
+                                src="lucerne.JPG"
+                                alt="Description of image 1"
+                            />
                         </div>
                         <div class="gallery-item">
-                            <img src="waterfall.JPG" alt="Description of image 2" />
+                            <img
+                                src="waterfall.JPG"
+                                alt="Description of image 2"
+                            />
                         </div>
                         <div class="gallery-item">
-                            <img src="paragliding.JPG" alt="Description of image 3" />
+                            <img
+                                src="paragliding.JPG"
+                                alt="Description of image 3"
+                            />
                         </div>
                         <div class="gallery-item">
-                            <img src="switzerland.JPG" alt="Description of image 4" />
+                            <img
+                                src="switzerland.JPG"
+                                alt="Description of image 4"
+                            />
                         </div>
                         <div class="gallery-item">
-                            <img src="glacier.JPG" alt="Description of image 5" />
+                            <img
+                                src="glacier.JPG"
+                                alt="Description of image 5"
+                            />
                         </div>
                     </div>
                 </div>
@@ -318,7 +356,9 @@
                             of HTML/CSS, JavaScript and web development in
                             general and I came out of the project with the
                             ability to create any full-stack application that I
-                            want.
+                            want. I'm proud of this project and had plans to
+                            scale the platform but those plans took a backseat
+                            to my baseball season and other classes.
                         </p>
                         <details class="dev-notes">
                             <summary>Development Notes</summary>
@@ -351,7 +391,7 @@
                             use case. Our group decided that the generation of
                             x-rays based off of a pose sketch (similar to the
                             ones in
-                            
+                            <a
                                 href="https://github.com/CMU-Perceptual-Computing-Lab/openpose"
                                 >OpenPose</a
                             >) has some pretty useful applications with pre and
@@ -368,6 +408,46 @@
                                 <p>
                                     Technologies used: Google CoLab, Python,
                                     PyTorch
+                                </p>
+                            </div>
+                        </details>
+                    </div>
+                    <div class="project-card">
+                        <h2 class="project-title">
+                            <a
+                                href="https://github.com/jamesmoore24/CV-Project/blob/main/CV_Project.pdf"
+                                target="_blank"
+                            >
+                                Stock Screener
+                            </a>
+                        </h2>
+                        <img
+                            class="project-image"
+                            src="stock-screener.png"
+                            alt="Project Image"
+                        />
+                        <p class="project-description">
+                            I wanted a comprehensive way to view different
+                            market trends for single and grouped stocks so I
+                            created a program that would run everyday and
+                            capture all of the different movement patterns of
+                            the different stocks in the S&P500 so I could get a
+                            general understanding of what was going on in the
+                            market from a statistical perspective. Obviously
+                            this data is widely available on the internet but
+                            what's different about this program is its
+                            extensibility. I'm able to create different metrics
+                            and criteria for stocks and then rank the stocks
+                            against each other based on that custom criteria
+                            which is something that is difficult to do on other
+                            visualization and backtesting platforms.
+                        </p>
+                        <details class="dev-notes">
+                            <summary>Development Notes</summary>
+                            <div class="dev-notes-content">
+                                <p>
+                                    Technologies used: Python, cron jobs, SQL,
+                                    PostgreSQL
                                 </p>
                             </div>
                         </details>
