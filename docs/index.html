@@ -5,36 +5,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>My Personal Website</title>
         <style>
-            body,
-            html {
+            body, html {
                 font-family: Arial, sans-serif;
-
                 margin: 0;
                 padding: 0;
                 height: 100%;
-                overflow: hidden;
             }
             .container {
                 display: flex;
+                flex-direction: column;
                 height: 100vh;
             }
             #sidebar {
                 background-color: #f0f0f0;
-                padding: 20px;
-                height: 100vh;
-                min-width: 150px; /* Minimum width to prevent content from breaking */
+                padding: 10px;
             }
             #sidebar h2 {
                 text-align: center;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
             }
             #sidebar ul {
                 list-style-type: none;
                 padding: 0;
                 margin: 0;
+                display: flex;
+                justify-content: center;
             }
             #sidebar li {
-                margin-bottom: 10px;
+                margin: 0 10px;
             }
             #sidebar a {
                 display: block;
@@ -81,6 +79,7 @@
                 width: 100%;
                 gap: 10px;
                 justify-content: flex-start;
+                flex-wrap: wrap;
             }
             .gallery-item {
                 width: 300px;
@@ -108,7 +107,8 @@
                 margin-bottom: 15px;
             }
             .project-image {
-                width: 50%;
+                width: 100%;
+                max-width: 500px;
                 object-fit: cover;
                 border-radius: 4px;
                 margin-bottom: 15px;
@@ -131,6 +131,23 @@
             #home {
                 display: block;
             }
+
+            /* Media query for larger screens */
+            @media screen and (min-width: 768px) {
+                .container {
+                    flex-direction: row;
+                }
+                #sidebar {
+                    width: 200px;
+                    height: 100vh;
+                }
+                #sidebar ul {
+                    flex-direction: column;
+                }
+                #sidebar li {
+                    margin: 10px 0;
+                }
+            }
         </style>
     </head>
     <body>
@@ -139,11 +156,7 @@
                 <h2>Navigation</h2>
                 <ul>
                     <li><a href="#" onclick="showSection('home')">Home</a></li>
-                    <li>
-                        <a href="#" onclick="showSection('projects')"
-                            >Projects</a
-                        >
-                    </li>
+                    <li><a href="#" onclick="showSection('projects')">Projects</a></li>
                     <li><a href="#" onclick="showSection('blog')">Blog</a></li>
                 </ul>
             </div>
@@ -166,16 +179,16 @@
                         <a href="https://www.youtube.com/@AndrejKarpathy"
                             >learning about AI</a
                         >, pitching for
-                        <a
+                        
                             href="https://mitathletics.com/sports/baseball/roster/jimmy-moore/12755"
                         >
                             MIT's varsity baseball team</a
                         >, lifting heavy, running fast for a long-ish time (see
                         you at the
-                        <a
+                        
                             href="https://www.baa.org/races/baa-half-marathon/registration"
                             >Boston half-marathon</a
-                        >), and making music for the piano (<a
+                        >), and making music for the piano (
                             href="https://www.youtube.com/watch?v=gSkrfzzsjlw"
                             >here's one of my earlier compositions</a
                         >).
@@ -208,7 +221,7 @@
                         <li><b>6.3900 Intro to Machine Learning (LAing)</b></li>
                         <li>
                             6.8301 Advances in Computer Vision (made a
-                            <a
+                            
                                 href="https://github.com/jamesmoore24/CV-Project/"
                                 >cool ResNet</a
                             >
@@ -230,34 +243,33 @@
                     <h2>Links:</h2>
                     <ul>
                         <li>
-                            <a
+                            
                                 href="https://github.com/jamesmoore24"
-                                target="”_blank”"
+                                target="_blank"
                                 >GitHub</a
                             >
                         </li>
                         <li>
-                            <a
+                            
                                 href="https://www.linkedin.com/in/james-moore-a931811b7/"
-                                target="”_blank”"
+                                target="_blank"
                                 >LinkedIn</a
                             >
                         </li>
                         <li>
-                            <a
+                            
                                 href="https://drive.google.com/file/d/1SnoO9_pz4A_jmiBEG1UYYl9IT64EsStP/view?usp=sharing"
-                                target="”_blank”"
+                                target="_blank"
                                 >Resume</a
                             >
                         </li>
                         <li>
-                            <a
+                            
                                 href="mailto:jame.moore24e@gmail.com"
-                                target="”_blank”"
+                                target="_blank"
                                 >Send me an email</a
                             >
                         </li>
-
                         <li>
                             <a href="https://x.com/bayesianupdate0"
                                 >Twitter (X)</a
@@ -268,34 +280,19 @@
 
                     <div class="gallery">
                         <div class="gallery-item">
-                            <img
-                                src="lucerne.JPG"
-                                alt="Description of image 1"
-                            />
+                            <img src="lucerne.JPG" alt="Description of image 1" />
                         </div>
                         <div class="gallery-item">
-                            <img
-                                src="waterfall.JPG"
-                                alt="Description of image 1"
-                            />
+                            <img src="waterfall.JPG" alt="Description of image 2" />
                         </div>
                         <div class="gallery-item">
-                            <img
-                                src="paragliding.JPG"
-                                alt="Description of image 1"
-                            />
+                            <img src="paragliding.JPG" alt="Description of image 3" />
                         </div>
                         <div class="gallery-item">
-                            <img
-                                src="switzerland.JPG"
-                                alt="Description of image 1"
-                            />
+                            <img src="switzerland.JPG" alt="Description of image 4" />
                         </div>
                         <div class="gallery-item">
-                            <img
-                                src="glacier.JPG"
-                                alt="Description of image 1"
-                            />
+                            <img src="glacier.JPG" alt="Description of image 5" />
                         </div>
                     </div>
                 </div>
@@ -304,7 +301,7 @@
                     <h1>My Projects</h1>
                     <div class="project-card">
                         <h2 class="project-title">
-                            <a href="https://fitlink.live/" target="”_blank”"
+                            <a href="https://fitlink.live/" target="_blank"
                                 >FitLink</a
                             >
                         </h2>
@@ -336,9 +333,9 @@
                     </div>
                     <div class="project-card">
                         <h2 class="project-title">
-                            <a
+                            
                                 href="https://github.com/jamesmoore24/CV-Project/blob/main/CV_Project.pdf"
-                                target="”_blank”"
+                                target="_blank"
                                 >X-Ray Generation with ControlNet</a
                             >
                         </h2>
@@ -355,7 +352,7 @@
                             use case. Our group decided that the generation of
                             x-rays based off of a pose sketch (similar to the
                             ones in
-                            <a
+                            
                                 href="https://github.com/CMU-Perceptual-Computing-Lab/openpose"
                                 >OpenPose</a
                             >) has some pretty useful applications with pre and
