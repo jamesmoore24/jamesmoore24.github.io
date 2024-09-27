@@ -1,756 +1,630 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>My Personal Website</title>
-        <style>
-            body,
-            html {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                height: 100%;
-            }
-            .container {
-                display: flex;
-                flex-direction: column;
-                height: 100vh;
-            }
-            #sidebar {
-                background-color: #f0f0f0;
-                padding: 10px;
-            }
-            #sidebar h2 {
-                text-align: center;
-                margin-bottom: 10px;
-            }
-            #sidebar ul {
-                list-style-type: none;
-                padding: 0;
-                margin: 0;
-                display: flex;
-                justify-content: center;
-            }
-            #sidebar li {
-                margin: 0 10px;
-            }
-            #sidebar a {
-                display: block;
-                padding: 10px;
-                text-decoration: none;
-                color: #333;
-                background-color: #e0e0e0;
-                border-radius: 5px;
-                text-align: center;
-                transition: background-color 0.3s;
-            }
-            #sidebar a:hover {
-                background-color: #d0d0d0;
-            }
-            #content {
-                flex-grow: 1;
-                overflow-y: auto;
-                padding: 20px;
-                box-sizing: border-box;
-            }
-            .blog-post {
-                margin-bottom: 20px;
-                border: 1px solid #ddd;
-                border-radius: 5px;
-                overflow: hidden;
-            }
-            .blog-post summary {
-                padding: 10px;
-                background-color: #f0f0f0;
-                cursor: pointer;
-                font-weight: bold;
-            }
-            .blog-post summary:hover {
-                background-color: #e0e0e0;
-            }
-            .blog-post .content {
-                padding: 10px;
-            }
-            .blog-post[open] summary {
-                border-bottom: 1px solid #ddd;
-            }
-            .gallery {
-                display: flex;
-                width: 100%;
-                gap: 10px;
-                justify-content: flex-start;
-                flex-wrap: wrap;
-            }
-            .gallery-item {
-                width: 300px;
-                height: 200px;
-                overflow: hidden;
-            }
-            .gallery-item img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-            .project-card {
-                border: 1px solid #ddd;
-                box-sizing: border-box;
-                border-radius: 8px;
-                padding: 20px;
-                margin-bottom: 20px;
-                width: 100%;
-            }
-            .project-title {
-                font-size: 24px;
-                margin-bottom: 10px;
-            }
-            .project-description {
-                margin-bottom: 15px;
-            }
-            .project-image {
-                width: 100%;
-                max-width: 500px;
-                object-fit: cover;
-                border-radius: 4px;
-                margin-bottom: 15px;
-            }
-            .dev-notes {
-                background-color: #f0f0f0;
-                border-radius: 4px;
-                padding: 10px;
-            }
-            .dev-notes summary {
-                cursor: pointer;
-                font-weight: bold;
-            }
-            .dev-notes-content {
-                padding-top: 10px;
-            }
-            .section {
-                display: none;
-            }
-            #home {
-                display: block;
-            }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Personal Website</title>
+    <style>
+      body,
+      html {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+      #sidebar {
+        background-color: #f0f0f0;
+        padding: 10px;
+      }
+      #sidebar h2 {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      #sidebar ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+      }
+      #sidebar li {
+        margin: 0 10px;
+      }
+      #sidebar a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: #333;
+        background-color: #e0e0e0;
+        border-radius: 5px;
+        text-align: center;
+        transition: background-color 0.3s;
+      }
+      #sidebar a:hover {
+        background-color: #d0d0d0;
+      }
+      #content {
+        flex-grow: 1;
+        overflow-y: auto;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .blog-post {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+      .blog-post summary {
+        padding: 10px;
+        background-color: #f0f0f0;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .blog-post summary:hover {
+        background-color: #e0e0e0;
+      }
+      .blog-post .content {
+        padding: 10px;
+      }
+      .blog-post[open] summary {
+        border-bottom: 1px solid #ddd;
+      }
+      .gallery {
+        display: flex;
+        width: 100%;
+        gap: 10px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+      .gallery-item {
+        width: 300px;
+        height: 200px;
+        overflow: hidden;
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .project-card {
+        border: 1px solid #ddd;
+        box-sizing: border-box;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+      }
+      .project-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      .project-description {
+        margin-bottom: 15px;
+      }
+      .project-image {
+        width: 100%;
+        max-width: 500px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-bottom: 15px;
+      }
+      .dev-notes {
+        background-color: #f0f0f0;
+        border-radius: 4px;
+        padding: 10px;
+      }
+      .dev-notes summary {
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .dev-notes-content {
+        padding-top: 10px;
+      }
+      .section {
+        display: none;
+      }
+      #home {
+        display: block;
+      }
 
-            /* Media query for larger screens */
-            @media screen and (min-width: 768px) {
-                .container {
-                    flex-direction: row;
-                }
-                #sidebar {
-                    width: 200px;
-                    height: 100vh;
-                }
-                #sidebar ul {
-                    flex-direction: column;
-                }
-                #sidebar li {
-                    margin: 10px 0;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div id="sidebar">
-                <h2>Navigation</h2>
-                <ul>
-                    <li><a href="#" onclick="showSection('home')">Home</a></li>
-                    <li>
-                        <a href="#" onclick="showSection('projects')"
-                            >Projects</a
-                        >
-                    </li>
-                    <li><a href="#" onclick="showSection('blog')">Blog</a></li>
-                </ul>
+      /* Media query for larger screens */
+      @media screen and (min-width: 768px) {
+        .container {
+          flex-direction: row;
+        }
+        #sidebar {
+          width: 200px;
+          height: 100vh;
+        }
+        #sidebar ul {
+          flex-direction: column;
+        }
+        #sidebar li {
+          margin: 10px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+          <li><a href="#" onclick="showSection('home')">Home</a></li>
+          <li>
+            <a href="#" onclick="showSection('projects')">Projects</a>
+          </li>
+          <li><a href="#" onclick="showSection('blog')">Blog</a></li>
+        </ul>
+      </div>
+
+      <div id="content">
+        <div id="home" class="section">
+          <h1>Hello world! 👋</h1>
+          <h1>My name is James.</h1>
+          <img
+            src="personal-picture.jpeg"
+            alt="Your Name"
+            style="max-width: 200px"
+          />
+          <h2>Bio:</h2>
+          <p>
+            4th year at MIT specializing in building AI/ML systems. Currently
+            building <a href="https://omniroute.ai/">OmniRoute.ai</a>, the last
+            unified LLM interface you will ever need. I spend my free time
+            <a href="https://www.youtube.com/@AndrejKarpathy"
+              >learning about AI</a
+            >, pitching for
+            <a
+              href="https://mitathletics.com/sports/baseball/roster/jimmy-moore/12755"
+            >
+              MIT's varsity baseball team</a
+            >, lifting heavy, running fast for a long-ish time (see you at the
+            <a href="https://www.baa.org/races/baa-half-marathon/registration"
+              >Boston half-marathon</a
+            >), and making music for the piano (<a
+              href="https://www.youtube.com/watch?v=gSkrfzzsjlw"
+              >here's one of my earlier compositions</a
+            >).
+          </p>
+          <h2>Relevant courses:</h2>
+          <p>
+            (<b>Bolded classes</b> are ones I'm taking/grading/LAing currently)
+          </p>
+          <p>
+            (<i>Italicized classes</i> are some of my personal favorites :D)
+          </p>
+          <ul>
+            <li>
+              <b>6.7960 Deep Learning (G) (Really excited for this one)</b>
+            </li>
+            <li>
+              <b>6.1060 Software Performance Optimization (Making bits fly)</b>
+            </li>
+            <li>
+              <b
+                >6.4120 Computational Cognitive Science (How to quantitatively
+                model how humans think)
+              </b>
+            </li>
+            <li>
+              <b><i>6.3800 Intro to Inference (Grading)</i></b>
+            </li>
+            <li>
+              <i><b>6.3900 Intro to Machine Learning (LAing)</b></i>
+            </li>
+            <li>
+              <i>
+                6.8301 Advances in Computer Vision (made a
+                <a href="https://github.com/jamesmoore24/CV-Project/"
+                  >cool ControlNet</a
+                >
+                to help doctors generate and view x-rays)
+              </i>
+            </li>
+            <li>6.1020 Software Construction</li>
+            <li>
+              6.1800 Computer Systems Engineering
+              <i>(mapping and reducing)</i>
+            </li>
+            <li>6.1220 Design and Analysis of Algorithms</li>
+            <li>
+              <i>
+                6.1910 Computational Structures (programmed a
+                <a href="https://en.wikipedia.org/wiki/RISC-V"
+                  >RISC-V processor</a
+                >
+                from scratch)</i
+              >
+            </li>
+            <li>18.C06 Linear Algebra</li>
+            <li>6.1200 Discrete Math</li>
+          </ul>
+          <h2>Links:</h2>
+          <ul>
+            <li>
+              <a href="https://github.com/jamesmoore24" target="_blank"
+                >GitHub</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/james-moore-a931811b7/"
+                target="_blank"
+                >LinkedIn</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://drive.google.com/file/d/1SnoO9_pz4A_jmiBEG1UYYl9IT64EsStP/view?usp=sharing"
+                target="_blank"
+                >Resume</a
+              >
+            </li>
+            <li>
+              <a href="mailto:jame.moore24e@gmail.com" target="_blank"
+                >Send me an email</a
+              >
+            </li>
+            <li>
+              <a href="https://x.com/bayesianupdate0">Twitter (X)</a>
+            </li>
+          </ul>
+          <h2>Some highlights from my most recent trip (🇨🇭):</h2>
+
+          <div class="gallery">
+            <div class="gallery-item">
+              <img src="lucerne.JPG" alt="Description of image 1" />
             </div>
-
-            <div id="content">
-                <div id="home" class="section">
-                    <h1>Hello world! 👋</h1>
-                    <h1>My name is James.</h1>
-                    <img
-                        src="personal-picture.jpeg"
-                        alt="Your Name"
-                        style="max-width: 200px"
-                    />
-                    <h2>Bio:</h2>
-                    <p>
-                        Incoming SWE at
-                        <a href="https://www.capitalone.com/">Capital One</a>.
-                        4th year at MIT specializing in building AI/ML systems.
-                        Currently building last unified LLM interface you will
-                        ever need. I spend my free time
-                        <a href="https://www.youtube.com/@AndrejKarpathy"
-                            >learning about AI</a
-                        >, pitching for
-                        <a
-                            href="https://mitathletics.com/sports/baseball/roster/jimmy-moore/12755"
-                        >
-                            MIT's varsity baseball team</a
-                        >, lifting heavy, running fast for a long-ish time (see
-                        you at the
-                        <a
-                            href="https://www.baa.org/races/baa-half-marathon/registration"
-                            >Boston half-marathon</a
-                        >), and making music for the piano (<a
-                            href="https://www.youtube.com/watch?v=gSkrfzzsjlw"
-                            >here's one of my earlier compositions</a
-                        >).
-                    </p>
-                    <h2>Relevant classes:</h2>
-                    <p>
-                        (<b>Bolded classes</b> are ones I'm taking/grading/LAing
-                        currently)
-                    </p>
-                    <p>
-                        (<i>Italicized classes</i> are some of my personal
-                        favorites :D)
-                    </p>
-                    <ul>
-                        <li>
-                            <b
-                                >6.7960 Deep Learning (G) (Really excited for
-                                this one)</b
-                            >
-                        </li>
-                        <li>
-                            <b
-                                >6.1060 Software Performance Optimization
-                                (Making bits fly)</b
-                            >
-                        </li>
-                        <li>
-                            <b
-                                >6.4120 Computational Cognitive Science (How to
-                                quantitatively model how humans think)
-                            </b>
-                        </li>
-                        <li>
-                            <b><i>6.3800 Intro to Inference (Grading)</i></b>
-                        </li>
-                        <li>
-                            <i
-                                ><b
-                                    >6.3900 Intro to Machine Learning (LAing)</b
-                                ></i
-                            >
-                        </li>
-                        <li>
-                            <i>
-                                6.8301 Advances in Computer Vision (made a
-                                <a
-                                    href="https://github.com/jamesmoore24/CV-Project/"
-                                    >cool ControlNet</a
-                                >
-                                to help doctors generate and view x-rays)
-                            </i>
-                        </li>
-                        <li>6.1020 Software Construction</li>
-                        <li>6.1800 Computer System Engineering</li>
-                        <li>6.1220 Design and Analysis of Algorithms</li>
-                        <li>
-                            <i>
-                                6.1910 Computational Structures (programmed a
-                                <a href="https://en.wikipedia.org/wiki/RISC-V"
-                                    >RISC-V processor</a
-                                >
-                                from scratch)</i
-                            >
-                        </li>
-                        <li>18.C06 Linear Algebra</li>
-                        <li>6.1200 Discrete Math</li>
-                    </ul>
-                    <h2>Links:</h2>
-                    <ul>
-                        <li>
-                            <a
-                                href="https://github.com/jamesmoore24"
-                                target="_blank"
-                                >GitHub</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href="https://www.linkedin.com/in/james-moore-a931811b7/"
-                                target="_blank"
-                                >LinkedIn</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href="https://drive.google.com/file/d/1SnoO9_pz4A_jmiBEG1UYYl9IT64EsStP/view?usp=sharing"
-                                target="_blank"
-                                >Resume</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href="mailto:jame.moore24e@gmail.com"
-                                target="_blank"
-                                >Send me an email</a
-                            >
-                        </li>
-                        <li>
-                            <a href="https://x.com/bayesianupdate0"
-                                >Twitter (X)</a
-                            >
-                        </li>
-                    </ul>
-                    <h2>Some highlights from my most recent trip (🇨🇭):</h2>
-
-                    <div class="gallery">
-                        <div class="gallery-item">
-                            <img
-                                src="lucerne.JPG"
-                                alt="Description of image 1"
-                            />
-                        </div>
-                        <div class="gallery-item">
-                            <img
-                                src="waterfall.JPG"
-                                alt="Description of image 2"
-                            />
-                        </div>
-                        <div class="gallery-item">
-                            <img
-                                src="paragliding.JPG"
-                                alt="Description of image 3"
-                            />
-                        </div>
-                        <div class="gallery-item">
-                            <img
-                                src="switzerland.JPG"
-                                alt="Description of image 4"
-                            />
-                        </div>
-                        <div class="gallery-item">
-                            <img
-                                src="glacier.JPG"
-                                alt="Description of image 5"
-                            />
-                        </div>
-                    </div>
-                </div>
-
-                <div id="projects" class="section">
-                    <h1>My Projects</h1>
-                    <div class="project-card">
-                        <h2 class="project-title">
-                            <a href="https://fitlink.live/" target="_blank"
-                                >FitLink</a
-                            >
-                        </h2>
-                        <img
-                            class="project-image"
-                            src="fitlink.png"
-                            alt="Project Image"
-                        />
-                        <p class="project-description">
-                            FitLink is a social-media application that hopes to
-                            completely digitize the workout-tracking experience.
-                            It does this by storing
-                        </p>
-                        <details class="dev-notes">
-                            <summary>Development Notes</summary>
-                            <div class="dev-notes-content">
-                                <p>
-                                    <b>Technologies used:</b><br /><br />
-                                    MongoDB Atlas, React, Express.js, Node.js
-                                    and Render
-                                </p>
-                                <p>
-                                    <b>What I learned:</b><br /><br />
-                                    FitLink was developed as part of MIT's
-                                    annual IAP "Web Lab" programming
-                                    competition. This was truly my first real
-                                    long-term hacking experience and I went
-                                    really deep into full-stack development. I
-                                    went into the project with a very surface
-                                    level understanding of HTML/CSS, JavaScript
-                                    and web development in general and I came
-                                    out of the project with the ability to
-                                    create any full-stack application that I
-                                    want. I'm proud of this project and had
-                                    plans to scale the platform but those plans
-                                    took a backseat to my baseball season and
-                                    other classes. At a higher level I learned
-                                    the importance of good initial software
-                                    design and abstraction since dealing with a
-                                    increasingly larger project becomes
-                                    unwieldly and I soon found myself spending
-                                    more and more time refactoring old code than
-                                    actually engineering new features which is
-                                    suboptimal.
-                                </p>
-                            </div>
-                        </details>
-                    </div>
-                    <div class="project-card">
-                        <h2 class="project-title">
-                            <a
-                                href="https://github.com/jamesmoore24/CV-Project/blob/main/CV_Project.pdf"
-                                target="_blank"
-                                >X-Ray Generation with ControlNet
-                            </a>
-                        </h2>
-                        <img
-                            class="project-image"
-                            src="xray.png"
-                            alt="Project Image"
-                        />
-                        <p class="project-description">
-                            This project was completed as part of 6.8301
-                            Advances in Computer Vision and was more of a deep
-                            dive into ResNets and trying to see if we could
-                            fine-tune one to control their output for a specific
-                            use case. Our group decided that the generation of
-                            x-rays based off of a pose sketch (similar to the
-                            ones in
-                            <a
-                                href="https://github.com/CMU-Perceptual-Computing-Lab/openpose"
-                                >OpenPose</a
-                            >) has some pretty useful applications with pre and
-                            post-treatment patient care. I led the technical
-                            development of the data preprocessing and model
-                            training pipelines and eventually trained our model
-                            to be 7% better than SotA. Got very comfortable with
-                            PyTorch and hacking a model to make it work better
-                            by adjusting the structure, hyperparams and data.
-                        </p>
-                        <details class="dev-notes">
-                            <summary>Development Notes</summary>
-                            <div class="dev-notes-content">
-                                <p>
-                                    Technologies used: Google CoLab, Python,
-                                    PyTorch
-                                </p>
-                            </div>
-                            <p>
-                                <b>Technologies used:</b><br /><br />
-                                Google CoLab, Python, PyTorch
-                            </p>
-                            <p>
-                                <b>What I learned:</b><br /><br />
-                                This was a very insightful project into the
-                                world of ML. It was my first large-scale ML
-                                project and I had 2 other people on my team to
-                                consult and help develop the software
-                                infrastructure to make it work. The first thing
-                                I quickly learned what how sparse widely used
-                                datasets were at least when it came to medical
-                                imaging. The scope of our fine-tuning could only
-                                go so far as to what was depicted in the data
-                                set and for a lot of our potential use-cases
-                                there just wasn't enough high quality x-rays
-                                that fit the use-case. In addition, configuring
-                                environments suitable for ML training and
-                                preprocessing proved to be difficult and working
-                                on the platform without a guaranteed connection
-                                to a sustained runtime became extremely
-                                cumbersome. There were many instances where I
-                                needed to close my computer which inadvertantly
-                                ended a training run which eliminated my
-                                environment that I set up which meant
-                                redownloaded every package that I needed for the
-                                training. What I found interesting what the
-                                different effects of SoTA techinques on the
-                                performance of the model on the validation set
-                                and it was fun getting to do things like
-                                BatchNorm, dropout and early stopping during my
-                                runs.
-                            </p>
-                        </details>
-                    </div>
-                    <div class="project-card">
-                        <h2 class="project-title">
-                            <a
-                                href="https://github.com/jamesmoore24/CV-Project/blob/main/CV_Project.pdf"
-                                target="_blank"
-                            >
-                                Stock Screener
-                            </a>
-                        </h2>
-                        <img
-                            class="project-image"
-                            src="stock-screener.png"
-                            alt="Project Image"
-                        />
-                        <p class="project-description">
-                            I wanted a comprehensive way to view different
-                            market trends for single and grouped stocks so I
-                            created a program that would run everyday and
-                            capture all of the different movement patterns of
-                            the different stocks in the S&P500 so I could get a
-                            general understanding of what was going on in the
-                            market from a statistical perspective. Obviously
-                            this data is widely available on the internet but
-                            what's different about this program is its
-                            extensibility. I'm able to create different metrics
-                            and criteria for stocks and then rank the stocks
-                            against each other based on that custom criteria
-                            which is something that is difficult to do on other
-                            visualization and backtesting platforms.
-                        </p>
-                        <details class="dev-notes">
-                            <summary>Development Notes</summary>
-                            <div class="dev-notes-content">
-                                <p>
-                                    Technologies used: Python, cron jobs, SQL,
-                                    PostgreSQL
-                                </p>
-                            </div>
-                        </details>
-                    </div>
-                </div>
-
-                <div id="blog" class="section">
-                    <h1>My Blog</h1>
-                    <p>
-                        The purpose of these blog posts is to document my life
-                        so I can look back on my different perspectives and how
-                        they've influenced the graph of my life and what
-                        decisions I've made. I hope by actively contributing to
-                        these blog posts I can get a better understanding of
-                        myself and the world. My goal is to never let my priors
-                        go to zero and to always be constantly updating my
-                        beliefs :)
-                    </p>
-
-                    <details class="blog-post">
-                        <summary>
-                            My goals for this semester (8/28/2024)
-                        </summary>
-                        <div class="content">
-                            <p>
-                                If I remember correctly I think there was some
-                                framework that I learned that made making goals
-                                optimal. It had some catchy acronym like FAIR or
-                                TIME but I think a general framework for
-                                measuring my work and then making some sort of
-                                quota that I need to fill should suffice.
-                            </p>
-                            <p>
-                                I think the first question is what should my
-                                goals be aimed at? I think at this point of my
-                                career I want to aim towards becoming the best
-                                engineer that I can be and that means not only
-                                getting exposure to more things but
-                                understanding how to solve problems and learn
-                                quickly in different environments. This takes me
-                                to my first goal:
-                            </p>
-                            <b>1) Get an A in 6.1060</b>
-                            <p>
-                                One of the classes that I'm taking this
-                                semester, 6.1060, is a notoriously
-                                time-intensive class and it deals with a lot of
-                                low-level code and infrastructure. I don't
-                                necessarily need to take this class as I will
-                                have the credits to graduate whether or not I
-                                take it, but I believe that the time that I
-                                spend taking this class will improve my skillset
-                                as a software engineer better than any other
-                                pursuit that I could do on my own/with other
-                                people. Approaching a topic like this is a
-                                monumental effort in itself and randomly walking
-                                through material on YouTube and GitHub might
-                                entail hundreds of wasted hours but learning
-                                this material in a course guarantees that my
-                                heuristic is optimally set by professors and
-                                TA's which understand the topic at a high level.
-                                If I ever want to deal with and completely
-                                control complex systems at some point in my
-                                career I think this class is necessary for me.
-                                Might as well take it now and strive for
-                                excellence while I'm young and able.
-                            </p>
-                            <b>2) Leetcode (>5 new problems a day)</b>
-                            <p>
-                                I think one thing I've realized about the
-                                interview process and software engineering is
-                                that the two are very different disciplines but
-                                are equally important. Without one the other
-                                doesn't work so it is critical to be excellent
-                                in both spheres to be a great engineer. As I've
-                                taken more assessments and gone through more
-                                interview processes I've realized that success
-                                on leetcode type algorithm problems is a
-                                function of solving similar problems as recently
-                                as possible. This essentially means that to
-                                prepare for interviews you want to solve as many
-                                leetcode problems as possible and then hope in
-                                the interview you come across a problem which
-                                closely matches one that you did in preparation
-                                for the interview. Easier said than done. This
-                                takes a tremendous amount of discipline and
-                                willingness to accept not doing things you might
-                                enjoy for a while which sucks but it's necessary
-                                to get an elite position.
-                            </p>
-                            <b> 3) Sleep (in bed for 8 hours a night) </b>
-                            <p>
-                                This is probably the hardest goal to meet given
-                                the amount of classes and work that I've cut out
-                                for myself but it is most likely the most
-                                important goal on this list. When deciding when
-                                do put for my next goal I thought of things like
-                                "maintain emotional health and regulate your
-                                mood better" or "stay injury free" but I think
-                                all of these wellness goals, while great, can be
-                                traced back to sleep in one way or another. If I
-                                need to sleep for less time than allotted so be
-                                it but I cannot allow myself to disregard this
-                                goal for extended periods of time (3+ nights in
-                                a row) because that's when I encounter focus and
-                                emotional issues that I wouldn't otherwise have.
-                            </p>
-                            <b>
-                                4) Derive a suitable financial strategy given my
-                                job offers
-                            </b>
-                            <p>
-                                While boring I think this is a very important
-                                goal for a couple of reasons. <br /><br />1) It
-                                gives me peace of mind when spending on big
-                                ticket items (trips, security deposit for an
-                                apartment, etc...) and smaller stuff like going
-                                out and having fun which benefits my
-                                interpersonal relationships. <br /><br />2)
-                                Gives me full control and knowledge of my
-                                financial situation if there ever comes a time
-                                where things go awry.<br /><br />
-
-                                I think I currently lack a defined idea of what
-                                I should be spending on dates and fun nights out
-                                with my friends especially in light of
-                                potentially living with my significant other
-                                after I graduate which might increase costs. I
-                                also want to travel over this coming summer so
-                                that will have to be planned for. In addition, I
-                                think while I'm young and have enough capital I
-                                need to be making sizable and frequent risks
-                                since if the money that I'm willing to lose now
-                                is invested in some risky position that has a
-                                10:1 payoff in a rare event will have outsized
-                                positive effect on my life compared to negative
-                                effect of potentially losing it all. For example
-                                if I invest $5,000 into a risky option and it
-                                pays off 5x then I end up with $25,000 that I
-                                can now invest into an index fund which will pay
-                                me out quite a lot more money over my lifetime
-                                compared to if I just had the $5,000.
-                                Identifying areas in the market where there is
-                                asymmetry is hard but I think in this era of AI
-                                there are some good plays to be made.
-                            </p>
-                            <b> 5) Track and plan each day </b>
-                            <p>
-                                This is difficult but I want to see if I'm able
-                                to do it. It would just take 10 minutes at the
-                                end of each day but I really want to see how I
-                                can improve my life just by measuring what I'm
-                                able to get done, what I think I did well and
-                                what I think I can do better. Hopefully through
-                                this I can track my progress towards my previous
-                                goals and hopefully try and achieve them. I wish
-                                to revisit these goals at the end of my semester
-                                and be happy with where I've come as a result of
-                                having these goals.
-                            </p>
-                        </div>
-                    </details>
-
-                    <details class="blog-post">
-                        <summary>
-                            Making my personal website (8/23/2024)
-                        </summary>
-                        <div class="content">
-                            <p>
-                                I guess the reason why I wanted to make a
-                                personal website wasn't entirely just because I
-                                thought it might be nice to have one. I actually
-                                think there's a genuine issue with how there
-                                exist multiple apps and places where we
-                                effectively host our personas on. Like how
-                                LinkedIn is for our "professional" side,
-                                Instagram/FB(if you're older) is for our
-                                "rich/successful/cool trips and showing off"
-                                side and Twitter/X is for more of our
-                                intellectual and argumentative/opinionated side.
-                                There of course are other examples of platforms
-                                which essentially take in different personas and
-                                interests but it begs the question of why there
-                                can't be one site or application that hosts all
-                                that we need?
-                            </p>
-                            <p>
-                                I guess the obvious answer is that the task of
-                                building such a website/application is such a
-                                challenge that we simply don't have the
-                                technology to support such an endeavor. I think
-                                the fact that X is currently attempting to be
-                                the "Everything app" confirms this belief but I
-                                can't help but theorize that it is just the way
-                                that we humans like to organize our different
-                                personas and interests into buckets. Like if I
-                                log into instagram I have a certain attitude and
-                                thing that I'm looking for compared to when,
-                                say, I log ito X or LinkedIn. Like a specific
-                                subconscious mindset is activated which locks me
-                                into a certain thought process when I enter a
-                                certain app. The <b>problem</b> with doing this
-                                is that I don't believe you are representing the
-                                full-ness of your being as a human when you
-                                engage with these applications. This is
-                                problematic because if we're not authentically
-                                representing ourselves then we leave connection,
-                                employment and discourse opoortunities on the
-                                table all of which improve the human condition.
-                            </p>
-                            <p>
-                                This is in fact why I think something like a
-                                personal website built from scratch is important
-                                to have. It essentially frees anyone from the
-                                algorithmic confines that any consumer
-                                application like Facebook, Instgram or Twitter
-                                tries to impose on you. Here I have to say that
-                                I believe Twitter does a better job at letting
-                                users understand
-                                <a
-                                    href="https://github.com/twitter/the-algorithm"
-                                    >exactly what is in the algorithm</a
-                                >
-                                which is really cool and is why I only have
-                                Twitter (except for LinkedIn because I want to
-                                be employed but even Twitter is starting to
-                                allow the ability to post and look for jobs so I
-                                might delete it in the future if it is
-                                comprehensive enough).
-                            </p>
-                            <p>
-                                I hope the future of the website looks like
-                                something that accurately represents and logs my
-                                beliefs, big or small, over the course of some
-                                significant amount of time. If all else fails at
-                                least I'll have a way for people to contact me
-                                and see what I'm up to.
-                            </p>
-                        </div>
-                    </details>
-                </div>
+            <div class="gallery-item">
+              <img src="waterfall.JPG" alt="Description of image 2" />
             </div>
+            <div class="gallery-item">
+              <img src="paragliding.JPG" alt="Description of image 3" />
+            </div>
+            <div class="gallery-item">
+              <img src="switzerland.JPG" alt="Description of image 4" />
+            </div>
+            <div class="gallery-item">
+              <img src="glacier.JPG" alt="Description of image 5" />
+            </div>
+          </div>
         </div>
 
-        <script>
-            function showSection(sectionId) {
-                const sections = document.getElementsByClassName("section");
-                for (let i = 0; i < sections.length; i++) {
-                    sections[i].style.display = "none";
-                }
-                document.getElementById(sectionId).style.display = "block";
-            }
-        </script>
-    </body>
+        <div id="projects" class="section">
+          <h1>My Projects</h1>
+          <div class="project-card">
+            <h2 class="project-title">
+              <a href="https://fitlink.live/" target="_blank">FitLink</a>
+            </h2>
+            <img class="project-image" src="fitlink.png" alt="Project Image" />
+            <p class="project-description">
+              FitLink is a social-media application that hopes to completely
+              digitize the workout-tracking experience. It does this by storing
+            </p>
+            <details class="dev-notes">
+              <summary>Development Notes</summary>
+              <div class="dev-notes-content">
+                <p>
+                  <b>Technologies used:</b><br /><br />
+                  MongoDB Atlas, React, Express.js, Node.js and Render
+                </p>
+                <p>
+                  <b>What I learned:</b><br /><br />
+                  FitLink was developed as part of MIT's annual IAP "Web Lab"
+                  programming competition. This was truly my first real
+                  long-term hacking experience and I went really deep into
+                  full-stack development. I went into the project with a very
+                  surface level understanding of HTML/CSS, JavaScript and web
+                  development in general and I came out of the project with the
+                  ability to create any full-stack application that I want. I'm
+                  proud of this project and had plans to scale the platform but
+                  those plans took a backseat to my baseball season and other
+                  classes. At a higher level I learned the importance of good
+                  initial software design and abstraction since dealing with a
+                  increasingly larger project becomes unwieldly and I soon found
+                  myself spending more and more time refactoring old code than
+                  actually engineering new features which is suboptimal.
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="project-card">
+            <h2 class="project-title">
+              <a
+                href="https://github.com/jamesmoore24/CV-Project/blob/main/CV_Project.pdf"
+                target="_blank"
+                >X-Ray Generation with ControlNet
+              </a>
+            </h2>
+            <img class="project-image" src="xray.png" alt="Project Image" />
+            <p class="project-description">
+              This project was completed as part of 6.8301 Advances in Computer
+              Vision and was more of a deep dive into ResNets and trying to see
+              if we could fine-tune one to control their output for a specific
+              use case. Our group decided that the generation of x-rays based
+              off of a pose sketch (similar to the ones in
+              <a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose"
+                >OpenPose</a
+              >) has some pretty useful applications with pre and post-treatment
+              patient care. I led the technical development of the data
+              preprocessing and model training pipelines and eventually trained
+              our model to be 7% better than SotA. Got very comfortable with
+              PyTorch and hacking a model to make it work better by adjusting
+              the structure, hyperparams and data.
+            </p>
+            <details class="dev-notes">
+              <summary>Development Notes</summary>
+              <div class="dev-notes-content">
+                <p>Technologies used: Google CoLab, Python, PyTorch</p>
+              </div>
+              <p>
+                <b>Technologies used:</b><br /><br />
+                Google CoLab, Python, PyTorch
+              </p>
+              <p>
+                <b>What I learned:</b><br /><br />
+                This was a very insightful project into the world of ML. It was
+                my first large-scale ML project and I had 2 other people on my
+                team to consult and help develop the software infrastructure to
+                make it work. The first thing I quickly learned what how sparse
+                widely used datasets were at least when it came to medical
+                imaging. The scope of our fine-tuning could only go so far as to
+                what was depicted in the data set and for a lot of our potential
+                use-cases there just wasn't enough high quality x-rays that fit
+                the use-case. In addition, configuring environments suitable for
+                ML training and preprocessing proved to be difficult and working
+                on the platform without a guaranteed connection to a sustained
+                runtime became extremely cumbersome. There were many instances
+                where I needed to close my computer which inadvertantly ended a
+                training run which eliminated my environment that I set up which
+                meant redownloaded every package that I needed for the training.
+                What I found interesting what the different effects of SoTA
+                techinques on the performance of the model on the validation set
+                and it was fun getting to do things like BatchNorm, dropout and
+                early stopping during my runs.
+              </p>
+            </details>
+          </div>
+          <div class="project-card">
+            <h2 class="project-title">
+              <a
+                href="https://github.com/jamesmoore24/CV-Project/blob/main/CV_Project.pdf"
+                target="_blank"
+              >
+                Stock Screener
+              </a>
+            </h2>
+            <img
+              class="project-image"
+              src="stock-screener.png"
+              alt="Project Image"
+            />
+            <p class="project-description">
+              I wanted a comprehensive way to view different market trends for
+              single and grouped stocks so I created a program that would run
+              everyday and capture all of the different movement patterns of the
+              different stocks in the S&P500 so I could get a general
+              understanding of what was going on in the market from a
+              statistical perspective. Obviously this data is widely available
+              on the internet but what's different about this program is its
+              extensibility. I'm able to create different metrics and criteria
+              for stocks and then rank the stocks against each other based on
+              that custom criteria which is something that is difficult to do on
+              other visualization and backtesting platforms.
+            </p>
+            <details class="dev-notes">
+              <summary>Development Notes</summary>
+              <div class="dev-notes-content">
+                <p>Technologies used: Python, cron jobs, SQL, PostgreSQL</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div id="blog" class="section">
+          <h1>My Blog</h1>
+          <p>
+            The purpose of these blog posts is to document my life so I can look
+            back on my different perspectives and how they've influenced the
+            graph of my life and what decisions I've made. I hope by actively
+            contributing to these blog posts I can get a better understanding of
+            myself and the world. My goal is to never let my priors go to zero
+            and to always be constantly updating my beliefs :)
+          </p>
+
+          <details class="blog-post">
+            <summary>My goals for this semester (8/28/2024)</summary>
+            <div class="content">
+              <p>
+                If I remember correctly I think there was some framework that I
+                learned that made making goals optimal. It had some catchy
+                acronym like FAIR or TIME but I think a general framework for
+                measuring my work and then making some sort of quota that I need
+                to fill should suffice.
+              </p>
+              <p>
+                I think the first question is what should my goals be aimed at?
+                I think at this point of my career I want to aim towards
+                becoming the best engineer that I can be and that means not only
+                getting exposure to more things but understanding how to solve
+                problems and learn quickly in different environments. This takes
+                me to my first goal:
+              </p>
+              <b>1) Get an A in 6.1060</b>
+              <p>
+                One of the classes that I'm taking this semester, 6.1060, is a
+                notoriously time-intensive class and it deals with a lot of
+                low-level code and infrastructure. I don't necessarily need to
+                take this class as I will have the credits to graduate whether
+                or not I take it, but I believe that the time that I spend
+                taking this class will improve my skillset as a software
+                engineer better than any other pursuit that I could do on my
+                own/with other people. Approaching a topic like this is a
+                monumental effort in itself and randomly walking through
+                material on YouTube and GitHub might entail hundreds of wasted
+                hours but learning this material in a course guarantees that my
+                heuristic is optimally set by professors and TA's which
+                understand the topic at a high level. If I ever want to deal
+                with and completely control complex systems at some point in my
+                career I think this class is necessary for me. Might as well
+                take it now and strive for excellence while I'm young and able.
+              </p>
+              <b>2) Leetcode (>5 new problems a day)</b>
+              <p>
+                I think one thing I've realized about the interview process and
+                software engineering is that the two are very different
+                disciplines but are equally important. Without one the other
+                doesn't work so it is critical to be excellent in both spheres
+                to be a great engineer. As I've taken more assessments and gone
+                through more interview processes I've realized that success on
+                leetcode type algorithm problems is a function of solving
+                similar problems as recently as possible. This essentially means
+                that to prepare for interviews you want to solve as many
+                leetcode problems as possible and then hope in the interview you
+                come across a problem which closely matches one that you did in
+                preparation for the interview. Easier said than done. This takes
+                a tremendous amount of discipline and willingness to accept not
+                doing things you might enjoy for a while which sucks but it's
+                necessary to get an elite position.
+              </p>
+              <b> 3) Sleep (in bed for 8 hours a night) </b>
+              <p>
+                This is probably the hardest goal to meet given the amount of
+                classes and work that I've cut out for myself but it is most
+                likely the most important goal on this list. When deciding when
+                do put for my next goal I thought of things like "maintain
+                emotional health and regulate your mood better" or "stay injury
+                free" but I think all of these wellness goals, while great, can
+                be traced back to sleep in one way or another. If I need to
+                sleep for less time than allotted so be it but I cannot allow
+                myself to disregard this goal for extended periods of time (3+
+                nights in a row) because that's when I encounter focus and
+                emotional issues that I wouldn't otherwise have.
+              </p>
+              <b>
+                4) Derive a suitable financial strategy given my job offers
+              </b>
+              <p>
+                While boring I think this is a very important goal for a couple
+                of reasons. <br /><br />1) It gives me peace of mind when
+                spending on big ticket items (trips, security deposit for an
+                apartment, etc...) and smaller stuff like going out and having
+                fun which benefits my interpersonal relationships.
+                <br /><br />2) Gives me full control and knowledge of my
+                financial situation if there ever comes a time where things go
+                awry.<br /><br />
+
+                I think I currently lack a defined idea of what I should be
+                spending on dates and fun nights out with my friends especially
+                in light of potentially living with my significant other after I
+                graduate which might increase costs. I also want to travel over
+                this coming summer so that will have to be planned for. In
+                addition, I think while I'm young and have enough capital I need
+                to be making sizable and frequent risks since if the money that
+                I'm willing to lose now is invested in some risky position that
+                has a 10:1 payoff in a rare event will have outsized positive
+                effect on my life compared to negative effect of potentially
+                losing it all. For example if I invest $5,000 into a risky
+                option and it pays off 5x then I end up with $25,000 that I can
+                now invest into an index fund which will pay me out quite a lot
+                more money over my lifetime compared to if I just had the
+                $5,000. Identifying areas in the market where there is asymmetry
+                is hard but I think in this era of AI there are some good plays
+                to be made.
+              </p>
+              <b> 5) Track and plan each day </b>
+              <p>
+                This is difficult but I want to see if I'm able to do it. It
+                would just take 10 minutes at the end of each day but I really
+                want to see how I can improve my life just by measuring what I'm
+                able to get done, what I think I did well and what I think I can
+                do better. Hopefully through this I can track my progress
+                towards my previous goals and hopefully try and achieve them. I
+                wish to revisit these goals at the end of my semester and be
+                happy with where I've come as a result of having these goals.
+              </p>
+            </div>
+          </details>
+
+          <details class="blog-post">
+            <summary>Making my personal website (8/23/2024)</summary>
+            <div class="content">
+              <p>
+                I guess the reason why I wanted to make a personal website
+                wasn't entirely just because I thought it might be nice to have
+                one. I actually think there's a genuine issue with how there
+                exist multiple apps and places where we effectively host our
+                personas on. Like how LinkedIn is for our "professional" side,
+                Instagram/FB(if you're older) is for our "rich/successful/cool
+                trips and showing off" side and Twitter/X is for more of our
+                intellectual and argumentative/opinionated side. There of course
+                are other examples of platforms which essentially take in
+                different personas and interests but it begs the question of why
+                there can't be one site or application that hosts all that we
+                need?
+              </p>
+              <p>
+                I guess the obvious answer is that the task of building such a
+                website/application is such a challenge that we simply don't
+                have the technology to support such an endeavor. I think the
+                fact that X is currently attempting to be the "Everything app"
+                confirms this belief but I can't help but theorize that it is
+                just the way that we humans like to organize our different
+                personas and interests into buckets. Like if I log into
+                instagram I have a certain attitude and thing that I'm looking
+                for compared to when, say, I log ito X or LinkedIn. Like a
+                specific subconscious mindset is activated which locks me into a
+                certain thought process when I enter a certain app. The
+                <b>problem</b> with doing this is that I don't believe you are
+                representing the full-ness of your being as a human when you
+                engage with these applications. This is problematic because if
+                we're not authentically representing ourselves then we leave
+                connection, employment and discourse opoortunities on the table
+                all of which improve the human condition.
+              </p>
+              <p>
+                This is in fact why I think something like a personal website
+                built from scratch is important to have. It essentially frees
+                anyone from the algorithmic confines that any consumer
+                application like Facebook, Instgram or Twitter tries to impose
+                on you. Here I have to say that I believe Twitter does a better
+                job at letting users understand
+                <a href="https://github.com/twitter/the-algorithm"
+                  >exactly what is in the algorithm</a
+                >
+                which is really cool and is why I only have Twitter (except for
+                LinkedIn because I want to be employed but even Twitter is
+                starting to allow the ability to post and look for jobs so I
+                might delete it in the future if it is comprehensive enough).
+              </p>
+              <p>
+                I hope the future of the website looks like something that
+                accurately represents and logs my beliefs, big or small, over
+                the course of some significant amount of time. If all else fails
+                at least I'll have a way for people to contact me and see what
+                I'm up to.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showSection(sectionId) {
+        const sections = document.getElementsByClassName("section");
+        for (let i = 0; i < sections.length; i++) {
+          sections[i].style.display = "none";
+        }
+        document.getElementById(sectionId).style.display = "block";
+      }
+    </script>
+  </body>
 </html>
