@@ -22,9 +22,9 @@ Around the middle of my sophomore year was when AI started to become incredibly 
 
 After realizing this I started to work harder than ever before. I loved the feeling of being able to work on something over which I have full control that could potentially give me outsized returns based solely on the decisions I make. But I realized something else. I could not do this alone. Enter Casey.
 
-Casey has been my friend ever since I came to MIT. Ever since I've known him he's always been positive and enthusiastic even in the face of injuries that kept him from playing baseball all four years during his time at MIT. He is fundamentally different from any other person I know and a true 1 of 1 person. It's because of this enthusiasm and his excellent strategic thinking ability that I'm proud to call him my co-founder and CEO. I'm also glad to say that so far the choice to include him in the venture has been a success. He wants to make his mark on the world just as much as I do.
+Casey has been my friend ever since I came to MIT. He is fundamentally different from any other person I know and a true 1 of 1 person. It's because of this enthusiasm and his excellent strategic thinking ability that I'm proud to call him my co-founder and CEO. I'm also glad to say that so far the choice to include him in the venture has been a success. He wants to make his mark on the world just as much as I do.
 
-I'm excited to see where this venture takes us. 
+I'm can't wait to see where this venture takes us. 
     `,
   },
 
