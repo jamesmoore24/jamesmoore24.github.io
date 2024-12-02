@@ -2,33 +2,6 @@ import { BlogPost } from "../types/blog";
 
 export const blogPosts: BlogPost[] = [
   {
-    id: "3",
-    title: "Why I'm Building a Company",
-    date: "2024-11-20",
-    excerpt:
-      "A personal journey of striving to make a significant impact through entrepreneurship and AI.",
-    readTime: "7 min read",
-    content: `
-I think my entire life I didn't really fit into a group. I don't know why exactly but I've always felt fundamentally different from the people who have surrounded me. I've always had extreme expectations for myself and what I believed I could do for the world. When I was in 4th grade our class was doing a career exploration activity and I happened to stumble upon the word "entrepreneur" somehow. After trying to spell it multiple times I remember telling my teacher that this was what I wanted to be when I grew up. I remember her surprised expression followed by a "you do know that is going to be hard right? Not everyone can be an entrepreneur." Those words stuck with me for a while. Did I have what it took to be one? Could I leave a lasting mark on the world? Could I somehow shape the way other people live their lives?
-
-I remember pondering these questions and then deciding that I was going to do everything in my power to give myself the abilities to try and make the world better as I see it. I wasn't really scared of how "hard" it was going to be since I believed that the reward of being able to improve society was far greater than any individual strife that I could face. Besides, what is the point of life if not to make it better for those that come after me?
-
-This thinking got me into the best school in the world, MIT. For the first time in my life I was surrounded by people who thought as big as me. I was ecstatic.
-
-Around the middle of my sophomore year was when AI started to become incredibly powerful. Scaling laws guaranteed that each iteration of the new GPT model would get increasingly intelligent and there was real potential to innovate in practically every industry. I knew that this would be one of my only shots at making my dream become a reality for a couple of reasons:
-
-1) I'm still enrolled at MIT which gives me two major advantages over any other regular founder who decides to start their own company: access to funding and infinite free time. I could purposely take easy classes to lighten my schedule which would give me more time to research and build products.
-2) We're still very early in AI. I don't think people realize how powerful this technology is going to become and how the applications of AI will continue to evolve and shape the fabric of reality. Almost every industry has an AI use application (trust me I did the research here) which means in time almost everything that we see now will be integrated with AI in some way. It will essentially be the only way to stay competitive as an enterprise. Because of this disruption and the fact that I'm still early means that there are systems that are ready to change and I have to be the one to make that happen. If I took a regular SWE job I think both my bargaining power as a founder would be greatly diminished and by the time I'm able to leave the company it will be too late to truly innovate in the application space of AI.
-
-After realizing this I started to work harder than ever before. I loved the feeling of being able to work on something over which I have full control that could potentially give me outsized returns based solely on the decisions I make. But I realized something else. I could not do this alone. Enter Casey.
-
-Casey has been my friend ever since I came to MIT. He is fundamentally different from any other person I know and a true 1 of 1 person. It's because of this enthusiasm and his excellent strategic thinking ability that I'm proud to call him my co-founder and CEO. I'm also glad to say that so far the choice to include him in the venture has been a success. He wants to make his mark on the world just as much as I do.
-
-I'm can't wait to see where this venture takes us. 
-    `,
-  },
-
-  {
     id: "2",
     title: "Understanding Hashing in Backend Systems",
     date: "2024-09-21",
