@@ -2,14 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .duration-2000 {
-    transition-duration: 2000ms;
-  }
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
 }

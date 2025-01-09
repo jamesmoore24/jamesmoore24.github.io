@@ -1,35 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ContentSection } from './components/ContentSection';
-import { Background } from './components/Background';
-import { BlogPostPage } from './pages/BlogPostPage';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Header } from './components/Header';
+import { Home } from './pages/Home';
+import { About } from './pages/About';
+import { Blog } from './pages/Blog';
+import { useThemeStore } from './lib/store';
 
 function App() {
-  const [showContent, setShowContent] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowContent(true), 1000);
-    return () => clearTimeout(timer);
-  }, []);
+  const { isDarkMode } = useThemeStore();
 
   return (
-    <Router>
-      <div className="relative min-h-screen">
-        <Background />
-        <div className="relative z-10 min-h-screen flex items-center justify-center py-20">
-          <Routes>
-            <Route 
-              path="/" 
-              element={<ContentSection isVisible={showContent} />} 
-            />
-            <Route 
-              path="/blog/:id" 
-              element={<BlogPostPage isVisible={showContent} />} 
-            />
-          </Routes>
-        </div>
+    <div className={isDarkMode ? 'dark' : ''}>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
+        <BrowserRouter>
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/blog" element={<Blog />} />
+            </Routes>
+          </main>
+        </BrowserRouter>
       </div>
-    </Router>
+    </div>
   );
 }
 
