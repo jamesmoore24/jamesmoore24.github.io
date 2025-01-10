@@ -1,5 +1,10 @@
 import React from "react";
 import MetaLogo from "../public/logos/meta.png";
+import CapitalOneLogo from "../public/logos/capital_one.png";
+import EECSLogo from "../public/logos/eecs.png";
+import ChevronLogo from "../public/logos/chevron.png";
+import NightowlLogo from "../public/logos/nightowl.png";
+import MITSloanLogo from "../public/logos/mit_sloan.png";
 
 const experiences = [
   {
@@ -9,34 +14,34 @@ const experiences = [
     logo: MetaLogo,
   },
   {
-    company: "Verizon",
+    company: "Capital One",
     role: "Software Engineering Intern",
-    period: "Jun 2023 - Aug 2023",
-    logo: "/logos/verizon.png",
+    period: "Jun 2024 - Aug 2024",
+    logo: CapitalOneLogo,
   },
   {
-    company: "Michigan Engineering",
-    role: "Instructional Aide",
-    period: "Aug 2023 - Dec 2024",
-    logo: "/logos/michigan.png",
+    company: "MIT EECS",
+    role: "Lab Assistant and Grader",
+    period: "Feb 2023 - Present",
+    logo: EECSLogo,
   },
   {
-    company: "Ultima Insights",
+    company: "Chevron",
     role: "Software Engineer Intern",
-    period: "Jan 2023 - Sep 2023",
-    logo: "/logos/ultima.png",
+    period: "Jun 2023 - Aug 2023",
+    logo: ChevronLogo,
   },
   {
-    company: "Stony Brook University",
-    role: "Research Assistant",
-    period: "Jun 2021 - Jan 2022",
-    logo: "/logos/stonybrook.png",
+    company: "MIT Sloan",
+    role: "Undergraduate Research Assistant",
+    period: "Jan 2024 - May 2024",
+    logo: MITSloanLogo,
   },
   {
-    company: "Mentaro",
-    role: "Co-Founder, Software Engineer",
-    period: "Sep 2020 - Aug 2022",
-    logo: "/logos/mentaro.png",
+    company: "Nightowl",
+    role: "Software Engineer Intern",
+    period: "Jun 2022 - Aug 2022",
+    logo: NightowlLogo,
   },
 ];
 
@@ -54,7 +59,7 @@ export function CareerVisualizer() {
         {experiences.map((experience, index) => (
           <div key={index} className="relative mb-6 last:mb-0">
             {/* Timeline dot */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full border-4 border-gray-700" />
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-purple-500 rounded-full border-4 border-gray-700" />
 
             <div
               className={`flex items-center w-full ${
@@ -95,11 +100,11 @@ export function CareerVisualizer() {
                   )}
                   {index % 2 === 1 && (
                     <>
-                      <div className="w-10 h-10 bg-gray-800 rounded-full p-2 flex items-center justify-center">
+                      <div className="w-15 h-15 flex items-center justify-center">
                         <img
                           src={experience.logo}
                           alt={`${experience.company} logo`}
-                          className="w-6 h-6 object-contain"
+                          className="w-20 h-20 object-contain"
                         />
                       </div>
                       <div>

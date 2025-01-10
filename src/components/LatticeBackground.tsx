@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
@@ -11,9 +11,25 @@ function Lattice() {
   const minDistance = 3; // Minimum distance between connected points
   const maxDistance = 6; // Maximum distance between connected points
 
+  // Add mouse position state
+  const mousePosition = useRef({ x: 0, y: 0 });
+  const targetRotation = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      mousePosition.current = {
+        x: (event.clientX / window.innerWidth) * 2 - 1,
+        y: -(event.clientY / window.innerHeight) * 2 + 1,
+      };
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   // Create random points within the bounding box
   for (let i = 0; i < numPoints; i++) {
-    const x = (Math.random() - 0.5) * boundingBox * 2;
+    const x = (Math.random() - 0.5) * boundingBox * 3;
     const y = (Math.random() - 0.5) * boundingBox * 2;
     const z = (Math.random() - 0.5) * boundingBox * 2;
     points.push(new THREE.Vector3(x, y, z));
@@ -65,8 +81,15 @@ function Lattice() {
 
   useFrame(() => {
     if (latticeRef.current) {
-      const rotationSpeed = 0.3;
-      latticeRef.current.rotation.y += rotationSpeed * 0.01;
+      // Smoothly interpolate target rotation based on mouse position
+      targetRotation.current.x +=
+        (mousePosition.current.y * 0.5 - targetRotation.current.x) * 0.1;
+      targetRotation.current.y +=
+        (mousePosition.current.x * 0.5 - targetRotation.current.y) * 0.1;
+
+      // Apply the rotation
+      latticeRef.current.rotation.x = targetRotation.current.x;
+      latticeRef.current.rotation.y += 0.003; // Keep a slight constant rotation
     }
   });
 
@@ -123,7 +146,7 @@ function Lattice() {
 
 export default function LatticeBackground() {
   return (
-    <div>
+    <div className="absolute inset-0 z-0">
       <Canvas camera={{ position: [20, 20, 20], fov: 45 }}>
         <ambientLight intensity={0.3} />
         <pointLight position={[10, 10, 10]} intensity={1.5} />

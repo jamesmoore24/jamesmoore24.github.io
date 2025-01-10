@@ -14,8 +14,8 @@ export function Header() {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `text-sm font-medium transition-colors hover:text-green-400 ${
-                  isActive ? "text-green-400" : "text-gray-300"
+                `text-sm font-medium transition-colors hover:text-purple-400 ${
+                  isActive ? "text-purple-400" : "text-gray-300"
                 }`
               }
             >
@@ -24,8 +24,8 @@ export function Header() {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                `text-sm font-medium transition-colors hover:text-green-400 ${
-                  isActive ? "text-green-400" : "text-gray-300"
+                `text-sm font-medium transition-colors hover:text-purple-400 ${
+                  isActive ? "text-purple-400" : "text-gray-300"
                 }`
               }
             >
@@ -34,8 +34,8 @@ export function Header() {
             <NavLink
               to="/blog"
               className={({ isActive }) =>
-                `text-sm font-medium transition-colors hover:text-green-400 ${
-                  isActive ? "text-green-400" : "text-gray-300"
+                `text-sm font-medium transition-colors hover:text-purple-400 ${
+                  isActive ? "text-purple-400" : "text-gray-300"
                 }`
               }
             >
