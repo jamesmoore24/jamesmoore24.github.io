@@ -2,16 +2,16 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const roles = [
-  "senior at MIT.",
-  "machine learning researcher.",
-  "software engineer.",
-  "AI enthusiast.",
-  "baseball player.",
-  "piano improviser.",
-  "thai food lover.",
-  "leadership training institute lead mentor.",
-  "golf enthusiast.",
-  "sushi lover.",
+  " senior at MIT.",
+  " machine learning researcher.",
+  " software engineer.",
+  "n AI enthusiast.",
+  " baseball player.",
+  " piano improviser.",
+  " thai food lover.",
+  " leadership training institute lead mentor.",
+  " golf enthusiast.",
+  " sushi lover.",
 ];
 
 export function TypewriterEffect() {
@@ -45,7 +45,7 @@ export function TypewriterEffect() {
 
   return (
     <div className="h-8 flex items-center justify-center text-purple-400 font-bold text-2xl whitespace-pre-wrap">
-      I am a{" "}
+      I am a
       <motion.div
         key={currentRole}
         initial={{ opacity: 0, y: 10 }}
