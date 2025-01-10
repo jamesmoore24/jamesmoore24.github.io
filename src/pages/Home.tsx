@@ -17,12 +17,12 @@ export function Home() {
           />
         </div>
         <div className="space-y-2">
-          <h1 className="text-4xl font-semibold text-gray-900 dark:text-white">
+          <h1 className="text-4xl font-semibold text-white">
             Hi, my name is James.
           </h1>
           <TypewriterEffect />
         </div>
-        <p className="max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300">
+        <p className="max-w-2xl mx-auto text-lg text-gray-300">
           I'm on a mission to try and make the world a safer, fairer, and more
           connected place.
         </p>

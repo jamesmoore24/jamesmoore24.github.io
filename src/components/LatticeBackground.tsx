@@ -4,41 +4,69 @@ import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 
 function Lattice() {
-  const points = [];
-  const edges = [];
-  const gridSize = 3;
-  const spacing = 2;
+  const points: THREE.Vector3[] = [];
+  const edges: [THREE.Vector3, THREE.Vector3][] = [];
+  const numPoints = 20; // Reduced number of points
+  const boundingBox = 8; // Space in which points can be distributed
+  const minDistance = 3; // Minimum distance between connected points
+  const maxDistance = 6; // Maximum distance between connected points
 
-  // Create points in a 3D grid
-  for (let x = -gridSize; x <= gridSize; x++) {
-    for (let y = -gridSize; y <= gridSize; y++) {
-      for (let z = -gridSize; z <= gridSize; z++) {
-        points.push(new THREE.Vector3(x * spacing, y * spacing, z * spacing));
-      }
-    }
+  // Create random points within the bounding box
+  for (let i = 0; i < numPoints; i++) {
+    const x = (Math.random() - 0.5) * boundingBox * 2;
+    const y = (Math.random() - 0.5) * boundingBox * 2;
+    const z = (Math.random() - 0.5) * boundingBox * 2;
+    points.push(new THREE.Vector3(x, y, z));
   }
 
-  // Create edges between adjacent points
+  // Create edges between points within distance threshold
+  const connectedPoints = new Set<number>();
+
+  // First pass: create edges within the distance threshold
   for (let i = 0; i < points.length; i++) {
     const point = points[i];
     points.forEach((otherPoint, j) => {
       if (i !== j) {
         const distance = point.distanceTo(otherPoint);
-        if (distance <= spacing * 1.1) {
+        if (distance >= minDistance && distance <= maxDistance) {
           edges.push([point, otherPoint]);
+          connectedPoints.add(i);
+          connectedPoints.add(j);
         }
       }
     });
   }
 
+  // Second pass: connect isolated points to their nearest neighbor
+  points.forEach((point, i) => {
+    if (!connectedPoints.has(i)) {
+      let nearestDistance = Infinity;
+      let nearestIndex = -1;
+
+      points.forEach((otherPoint, j) => {
+        if (i !== j) {
+          const distance = point.distanceTo(otherPoint);
+          if (distance < nearestDistance) {
+            nearestDistance = distance;
+            nearestIndex = j;
+          }
+        }
+      });
+
+      if (nearestIndex !== -1) {
+        edges.push([point, points[nearestIndex]]);
+        connectedPoints.add(i);
+        connectedPoints.add(nearestIndex);
+      }
+    }
+  });
+
   const latticeRef = useRef<THREE.Group>(null);
 
-  useFrame(({ mouse }) => {
+  useFrame(() => {
     if (latticeRef.current) {
       const rotationSpeed = 0.3;
       latticeRef.current.rotation.y += rotationSpeed * 0.01;
-      latticeRef.current.rotation.x = (mouse.y * Math.PI) / 8;
-      latticeRef.current.rotation.z = (mouse.x * Math.PI) / 8;
     }
   });
 
@@ -47,8 +75,12 @@ function Lattice() {
       {/* Nodes */}
       {points.map((point, index) => (
         <mesh key={`point-${index}`} position={point}>
-          <sphereGeometry args={[0.1, 16, 16]} />
-          <meshStandardMaterial color="#00ff88" />
+          <sphereGeometry args={[0.2, 32, 32]} />
+          <meshStandardMaterial
+            color="#d1a3ff" // Changed to a lighter purple
+            emissive="#a57cd9" // Changed to a lighter purple
+            emissiveIntensity={0.3}
+          />
         </mesh>
       ))}
 
@@ -61,18 +93,27 @@ function Lattice() {
           direction.multiplyScalar(0.5)
         );
 
+        // Calculate the rotation to align the cylinder with the edge direction
+        const quaternion = new THREE.Quaternion();
+        quaternion.setFromUnitVectors(
+          new THREE.Vector3(0, 1, 0),
+          direction.clone().normalize()
+        );
+
         return (
-          <mesh key={`edge-${index}`} position={position}>
-            <cylinderGeometry args={[0.02, 0.02, length, 8]} />
-            <meshStandardMaterial color="#00aa88" />
-            <group rotation={[Math.PI / 2, 0, 0]}>
-              <group
-                quaternion={new THREE.Quaternion().setFromUnitVectors(
-                  new THREE.Vector3(0, 1, 0),
-                  direction.normalize()
-                )}
-              />
-            </group>
+          <mesh
+            key={`edge-${index}`}
+            position={position}
+            quaternion={quaternion}
+          >
+            <cylinderGeometry args={[0.05, 0.05, length, 8]} />
+            <meshStandardMaterial
+              color="#8800ff" // Changed to purple
+              transparent
+              opacity={0.6}
+              emissive="#4400aa" // Changed to a darker purple
+              emissiveIntensity={0.2}
+            />
           </mesh>
         );
       })}
@@ -94,13 +135,13 @@ export default function LatticeBackground() {
       }}
     >
       <Canvas
-        camera={{ position: [15, 15, 15], fov: 50 }}
+        camera={{ position: [20, 20, 20], fov: 45 }}
         style={{ width: "100%", height: "100%" }}
       >
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1} />
+        <ambientLight intensity={0.3} />
+        <pointLight position={[10, 10, 10]} intensity={1.5} />
         <Lattice />
-        <OrbitControls enableZoom={false} />
+        <OrbitControls enableZoom={false} enablePan={false} />
       </Canvas>
     </div>
   );

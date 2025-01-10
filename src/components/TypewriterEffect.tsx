@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const roles = [
+  "senior at MIT.",
+  "machine learning researcher.",
   "software engineer.",
-  "ML enthusiast.",
+  "AI enthusiast.",
   "baseball player.",
   "piano improviser.",
   "thai food lover.",
@@ -42,7 +44,7 @@ export function TypewriterEffect() {
   }, [text, isDeleting, currentRole]);
 
   return (
-    <div className="h-8 flex items-center justify-center text-green-600 dark:text-green-400 font-bold text-2xl whitespace-pre-wrap">
+    <div className="h-8 flex items-center justify-center text-purple-400 font-bold text-2xl whitespace-pre-wrap">
       I am a{" "}
       <motion.div
         key={currentRole}
