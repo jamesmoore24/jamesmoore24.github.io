@@ -1,10 +1,10 @@
 import React from "react";
-import MetaLogo from "../../public/logos/meta.png";
-import CapitalOneLogo from "../../public/logos/capital_one.png";
-import EECSLogo from "../../public/logos/eecs.png";
-import ChevronLogo from "../../public/logos/chevron.png";
-import NightowlLogo from "../../public/logos/nightowl.png";
-import MITSloanLogo from "../../public/logos/mit_sloan.png";
+import MetaLogo from "/logos/meta.png";
+import CapitalOneLogo from "/logos/capital_one.png";
+import EECSLogo from "/logos/eecs.png";
+import ChevronLogo from "/logos/chevron.png";
+import NightowlLogo from "/logos/nightowl.png";
+import MITSloanLogo from "/logos/mit_sloan.png";
 
 const experiences = [
   {
@@ -24,7 +24,7 @@ const experiences = [
   {
     company: "MIT EECS",
     role: "Lab Assistant and Grader",
-    period: "Feb 2023 - Present",
+    period: "Feb 2024 - Present",
     logo: EECSLogo,
     link: "https://www.eecs.mit.edu/",
   },
@@ -38,7 +38,7 @@ const experiences = [
   {
     company: "MIT Sloan",
     role: "Undergraduate Research Assistant",
-    period: "Jan 2024 - May 2024",
+    period: "Jan 2023 - Feb 2023",
     logo: MITSloanLogo,
     link: "https://mitsloan.mit.edu/",
   },
