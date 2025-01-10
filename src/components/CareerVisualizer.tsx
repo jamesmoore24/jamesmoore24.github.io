@@ -16,7 +16,7 @@ const experiences = [
   },
   {
     company: "Capital One",
-    role: "Software Engineering Intern",
+    role: "Software Engineer Intern",
     period: "Jun 2024 - Aug 2024",
     logo: CapitalOneLogo,
     link: "https://www.capitalone.com/",

@@ -7,11 +7,13 @@ import ProfilePicture from "/profile-picture.jpeg";
 export function Home() {
   return (
     <>
+      <LatticeBackground />
+
       <div className="relative min-h-[calc(100vh-4rem)] overflow-hidden flex flex-col md:flex-row">
         {/* Hero Section */}
         <div className="w-full md:flex-1 flex flex-col items-center justify-center space-y-6 relative z-10 py-8 md:py-16">
           <div
-            className="w-36 h-36 md:w-48 md:h-48 mx-auto mb-4 md:mb-8 opacity-0 animate-fade-in"
+            className="w-48 h-48 md:w-56 md:h-56 mx-auto mb-4 md:mb-8 opacity-0 animate-fade-in"
             style={{ animationDelay: "400ms", animationFillMode: "forwards" }}
           >
             <img

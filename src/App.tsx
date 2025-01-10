@@ -15,7 +15,6 @@ function App() {
     <div className={isDarkMode ? "dark" : ""}>
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
         <Router>
-          <LatticeBackground />
           <div className="relative z-10">
             <Header />
             <main>
