@@ -1,13 +1,14 @@
 import React from "react";
 import { TypewriterEffect } from "../components/TypewriterEffect";
-import { Graph3D } from "../components/Graph3D";
+import LatticeBackground from "../components/LatticeBackground";
 import ProfilePicture from "../public/profile-picture.jpeg";
 
 export function Home() {
   return (
     <div className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center">
-      <Graph3D />
       <div className="text-center space-y-6 relative z-10">
+        <LatticeBackground />
+
         <div className="w-48 h-48 mx-auto mb-8">
           <img
             src={ProfilePicture}
