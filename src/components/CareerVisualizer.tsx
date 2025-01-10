@@ -12,36 +12,42 @@ const experiences = [
     role: "Incoming Software Engineer",
     period: "June 2025",
     logo: MetaLogo,
+    link: "https://www.meta.com/",
   },
   {
     company: "Capital One",
     role: "Software Engineering Intern",
     period: "Jun 2024 - Aug 2024",
     logo: CapitalOneLogo,
+    link: "https://www.capitalone.com/",
   },
   {
     company: "MIT EECS",
     role: "Lab Assistant and Grader",
     period: "Feb 2023 - Present",
     logo: EECSLogo,
+    link: "https://www.eecs.mit.edu/",
   },
   {
     company: "Chevron",
     role: "Software Engineer Intern",
     period: "Jun 2023 - Aug 2023",
     logo: ChevronLogo,
+    link: "https://www.chevron.com/",
   },
   {
     company: "MIT Sloan",
     role: "Undergraduate Research Assistant",
     period: "Jan 2024 - May 2024",
     logo: MITSloanLogo,
+    link: "https://mitsloan.mit.edu/",
   },
   {
     company: "Nightowl",
     role: "Software Engineer Intern",
     period: "Jun 2022 - Aug 2022",
     logo: NightowlLogo,
+    link: "https://www.linkedin.com/company/night-owl-1/?viewAsMember=true",
   },
 ];
 
@@ -74,7 +80,8 @@ export function CareerVisualizer() {
                 <div
                   className={`flex items-center gap-3 ${
                     index % 2 === 0 ? "justify-end" : "justify-start"
-                  }`}
+                  } transition-transform duration-200 hover:scale-105 cursor-pointer`}
+                  onClick={() => window.open(experience.link, "_blank")}
                 >
                   {index % 2 === 0 && (
                     <>
