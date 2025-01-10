@@ -187,8 +187,8 @@ function Lattice() {
 export default function LatticeBackground() {
   return (
     <div
-      className="absolute inset-0 z-0 opacity-0 animate-fade-in"
-      style={{ animationDelay: "1600ms", animationFillMode: "forwards" }}
+      className="w-full h-full opacity-0 animate-fade-in"
+      style={{ animationDelay: "400ms", animationFillMode: "forwards" }}
     >
       <Canvas camera={{ position: [20, 20, 20], fov: 45 }}>
         <ambientLight intensity={0.3} />

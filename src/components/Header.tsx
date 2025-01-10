@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export function Header() {
   const navigation = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
+    { name: "Blog", href: "/blog" },
     { name: "Resume", href: "/resume" },
   ];
 

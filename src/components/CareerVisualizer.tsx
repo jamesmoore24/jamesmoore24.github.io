@@ -59,7 +59,10 @@ export function CareerVisualizer() {
     >
       <div className="relative py-4">
         {/* Timeline line */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-700" />
+        <div
+          className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-700"
+          style={{ height: "200vh" }}
+        />
 
         {/* Experience items */}
         {experiences.map((experience, index) => (

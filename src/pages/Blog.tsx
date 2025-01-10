@@ -1,56 +1,98 @@
-import React, { useState } from 'react';
-import { Lock } from 'lucide-react';
+import React, { useState } from "react";
+import { format } from "date-fns";
+import ReactMarkdown from "react-markdown";
 
-const BLOG_PASSWORD = 'demo123'; // In a real app, this would be handled securely
+// Authentication questions
+const authQuestions = [
+  {
+    question: "What is my sister's name?",
+    answer: "Olivia",
+  },
+  {
+    question: "What is my birthday? (MM/DD)",
+    answer: "07/24",
+  },
+  {
+    question: "What is my favorite food?",
+    answer: "sushi",
+  },
+];
+
+// Sample blog posts (you can replace these with your actual posts)
+const blogPosts = [
+  {
+    id: 1,
+    title: "My First Blog Post",
+    date: new Date("2024-01-15"),
+    content: `
+# My First Blog Post
+
+This is a sample blog post using markdown.
+
+## Features
+- Markdown support
+- Code highlighting
+- And more!
+
+\`\`\`python
+def hello_world():
+    print("Hello, world!")
+\`\`\`
+    `,
+  },
+  // Add more blog posts here
+];
 
 export function Blog() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answer, setAnswer] = useState("");
+  const [selectedPost, setSelectedPost] = useState(blogPosts[0]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleAnswerSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === BLOG_PASSWORD) {
-      setIsAuthenticated(true);
-      setError('');
+    if (
+      answer.toLowerCase().trim() ===
+      authQuestions[currentQuestion].answer.toLowerCase()
+    ) {
+      if (currentQuestion === authQuestions.length - 1) {
+        setIsAuthenticated(true);
+      } else {
+        setCurrentQuestion(currentQuestion + 1);
+      }
+      setAnswer("");
     } else {
-      setError('Incorrect password');
+      alert("Incorrect answer. Please try again.");
+      setAnswer("");
     }
   };
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
-        <div className="w-full max-w-md p-8 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-          <div className="flex flex-col items-center mb-6">
-            <Lock className="w-12 h-12 text-green-600 dark:text-green-400 mb-4" />
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-              Protected Content
-            </h2>
-          </div>
-          
-          <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-gray-900">
+        <div className="max-w-md w-full mx-auto p-6 bg-gray-800 rounded-lg shadow-xl">
+          <h2 className="text-2xl font-bold text-white mb-6 text-center">
+            Authentication Required
+          </h2>
+          <form onSubmit={handleAnswerSubmit} className="space-y-4">
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                Password
+              <label className="block text-gray-300 mb-2">
+                {authQuestions[currentQuestion].question}
               </label>
               <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                placeholder="Enter password"
+                type="text"
+                value={answer}
+                onChange={(e) => setAnswer(e.target.value)}
+                className="w-full px-4 py-2 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
+                placeholder="Your answer"
+                autoFocus
               />
             </div>
-            {error && (
-              <p className="text-red-500 text-sm">{error}</p>
-            )}
             <button
               type="submit"
-              className="w-full py-2 px-4 bg-green-600 hover:bg-green-700 text-white font-medium rounded-md transition-colors"
+              className="w-full py-2 px-4 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors"
             >
-              Access Blog
+              Submit
             </button>
           </form>
         </div>
@@ -59,26 +101,47 @@ export function Blog() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-16">
-      <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">Blog Posts</h1>
-      <div className="grid gap-8">
-        {/* Sample blog posts - in a real app, these would be loaded from a database */}
-        <article className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            The Future of AI in Software Development
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300">
-            Exploring how artificial intelligence is transforming the way we write and maintain code...
-          </p>
-        </article>
-        <article className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Leadership Lessons from Baseball
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300">
-            What America's favorite pastime taught me about leading development teams...
-          </p>
-        </article>
+    <div className="min-h-[calc(100vh-4rem)] bg-gray-900">
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="flex gap-8">
+          {/* Sidebar */}
+          <div className="w-64 shrink-0">
+            <div className="bg-gray-800 rounded-lg p-4">
+              <h2 className="text-xl font-bold text-white mb-4">Blog Posts</h2>
+              <div className="space-y-2">
+                {blogPosts.map((post) => (
+                  <button
+                    key={post.id}
+                    onClick={() => setSelectedPost(post)}
+                    className={`w-full text-left p-2 rounded transition-colors ${
+                      selectedPost.id === post.id
+                        ? "bg-purple-600 text-white"
+                        : "text-gray-300 hover:bg-gray-700"
+                    }`}
+                  >
+                    <div className="font-medium">{post.title}</div>
+                    <div className="text-sm opacity-75">
+                      {format(post.date, "MMM d, yyyy")}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Main content */}
+          <div className="flex-1 bg-gray-800 rounded-lg p-8">
+            <div className="prose prose-invert max-w-none">
+              <h1 className="text-3xl font-bold text-white mb-2">
+                {selectedPost.title}
+              </h1>
+              <div className="text-gray-400 mb-8">
+                {format(selectedPost.date, "MMMM d, yyyy")}
+              </div>
+              <ReactMarkdown>{selectedPost.content}</ReactMarkdown>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
