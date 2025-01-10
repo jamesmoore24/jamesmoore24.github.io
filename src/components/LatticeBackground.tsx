@@ -123,21 +123,8 @@ function Lattice() {
 
 export default function LatticeBackground() {
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        zIndex: -1,
-        background: "linear-gradient(to bottom, #000510, #002030)",
-      }}
-    >
-      <Canvas
-        camera={{ position: [20, 20, 20], fov: 45 }}
-        style={{ width: "100%", height: "100%" }}
-      >
+    <div>
+      <Canvas camera={{ position: [20, 20, 20], fov: 45 }}>
         <ambientLight intensity={0.3} />
         <pointLight position={[10, 10, 10]} intensity={1.5} />
         <Lattice />

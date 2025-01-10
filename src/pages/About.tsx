@@ -8,7 +8,7 @@ import {
   UtensilsCrossed,
 } from "lucide-react";
 
-const activities = [
+const positions = [
   {
     icon: Code2,
     title: "Software Engineering",
