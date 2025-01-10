@@ -6,7 +6,7 @@ import * as THREE from "three";
 function Lattice() {
   const points: THREE.Vector3[] = [];
   const edges: [THREE.Vector3, THREE.Vector3][] = [];
-  const numPoints = 20; // Reduced number of points
+  const numPoints = 15; // Reduced number of points
   const boundingBox = 8; // Space in which points can be distributed
   const minDistance = 3; // Minimum distance between connected points
   const maxDistance = 6; // Maximum distance between connected points
@@ -146,7 +146,10 @@ function Lattice() {
 
 export default function LatticeBackground() {
   return (
-    <div className="absolute inset-0 z-0">
+    <div
+      className="absolute inset-0 z-0 opacity-0 animate-fade-in"
+      style={{ animationDelay: "400ms", animationFillMode: "forwards" }}
+    >
       <Canvas camera={{ position: [20, 20, 20], fov: 45 }}>
         <ambientLight intensity={0.3} />
         <pointLight position={[10, 10, 10]} intensity={1.5} />

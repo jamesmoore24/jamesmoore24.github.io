@@ -1,10 +1,10 @@
 import React from "react";
-import MetaLogo from "../public/logos/meta.png";
-import CapitalOneLogo from "../public/logos/capital_one.png";
-import EECSLogo from "../public/logos/eecs.png";
-import ChevronLogo from "../public/logos/chevron.png";
-import NightowlLogo from "../public/logos/nightowl.png";
-import MITSloanLogo from "../public/logos/mit_sloan.png";
+import MetaLogo from "../../public/logos/meta.png";
+import CapitalOneLogo from "../../public/logos/capital_one.png";
+import EECSLogo from "../../public/logos/eecs.png";
+import ChevronLogo from "../../public/logos/chevron.png";
+import NightowlLogo from "../../public/logos/nightowl.png";
+import MITSloanLogo from "../../public/logos/mit_sloan.png";
 
 const experiences = [
   {

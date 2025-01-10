@@ -2,6 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 export function Header() {
+  const navigation = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Resume", href: "/resume" },
+  ];
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-gray-950/80 border-gray-800">
       <div className="container mx-auto px-4">
@@ -11,36 +17,18 @@ export function Header() {
           </NavLink>
 
           <nav className="flex items-center gap-6">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `text-sm font-medium transition-colors hover:text-purple-400 ${
-                  isActive ? "text-purple-400" : "text-gray-300"
-                }`
-              }
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                `text-sm font-medium transition-colors hover:text-purple-400 ${
-                  isActive ? "text-purple-400" : "text-gray-300"
-                }`
-              }
-            >
-              About
-            </NavLink>
-            <NavLink
-              to="/blog"
-              className={({ isActive }) =>
-                `text-sm font-medium transition-colors hover:text-purple-400 ${
-                  isActive ? "text-purple-400" : "text-gray-300"
-                }`
-              }
-            >
-              Blog
-            </NavLink>
+            {navigation.map((item) => (
+              <NavLink
+                to={item.href}
+                className={({ isActive }) =>
+                  `text-sm font-medium transition-colors hover:text-purple-400 ${
+                    isActive ? "text-purple-400" : "text-gray-300"
+                  }`
+                }
+              >
+                {item.name}
+              </NavLink>
+            ))}
           </nav>
         </div>
       </div>

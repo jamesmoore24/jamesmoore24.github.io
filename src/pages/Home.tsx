@@ -2,7 +2,7 @@ import React from "react";
 import { TypewriterEffect } from "../components/TypewriterEffect";
 import LatticeBackground from "../components/LatticeBackground";
 import { CareerVisualizer } from "../components/CareerVisualizer";
-import ProfilePicture from "../public/profile-picture.jpeg";
+import ProfilePicture from "../../public/profile-picture.jpeg";
 
 export function Home() {
   return (
