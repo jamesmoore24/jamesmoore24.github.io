@@ -7,7 +7,6 @@ import ProfilePicture from "/profile-picture.jpeg";
 export function Home() {
   return (
     <>
-      <LatticeBackground />
       <div className="relative h-[calc(100vh-4rem)] overflow-hidden flex flex-row">
         {/* Hero Section */}
         <div className="flex-1 flex flex-col items-center justify-center space-y-6 relative z-10 py-16">

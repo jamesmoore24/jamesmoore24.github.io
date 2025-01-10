@@ -6,25 +6,62 @@ import * as THREE from "three";
 function Lattice() {
   const points: THREE.Vector3[] = [];
   const edges: [THREE.Vector3, THREE.Vector3][] = [];
-  const numPoints = 15; // Reduced number of points
+  const numPoints = 20; // Reduced number of points
   const boundingBox = 8; // Space in which points can be distributed
   const minDistance = 3; // Minimum distance between connected points
   const maxDistance = 6; // Maximum distance between connected points
 
-  // Add mouse position state
+  // Add mouse position and interaction state
   const mousePosition = useRef({ x: 0, y: 0 });
   const targetRotation = useRef({ x: 0, y: 0 });
+  const isDragging = useRef(false);
+  const previousMousePosition = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
+      if (isDragging.current) {
+        // Calculate mouse movement delta
+        const deltaX =
+          (event.clientX / window.innerWidth) * 2 -
+          1 -
+          previousMousePosition.current.x;
+        const deltaY =
+          -((event.clientY / window.innerHeight) * 2 - 1) -
+          previousMousePosition.current.y;
+
+        // Update target rotation based on drag movement
+        targetRotation.current.x += deltaY * 2;
+        targetRotation.current.y += deltaX * 2;
+      }
+
+      // Update mouse positions
       mousePosition.current = {
+        x: (event.clientX / window.innerWidth) * 2 - 1,
+        y: -(event.clientY / window.innerHeight) * 2 + 1,
+      };
+      previousMousePosition.current = {
         x: (event.clientX / window.innerWidth) * 2 - 1,
         y: -(event.clientY / window.innerHeight) * 2 + 1,
       };
     };
 
+    const handleMouseDown = () => {
+      isDragging.current = true;
+    };
+
+    const handleMouseUp = () => {
+      isDragging.current = false;
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousedown", handleMouseDown);
+    window.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
   }, []);
 
   // Create random points within the bounding box
@@ -81,15 +118,18 @@ function Lattice() {
 
   useFrame(() => {
     if (latticeRef.current) {
-      // Smoothly interpolate target rotation based on mouse position
-      targetRotation.current.x +=
-        (mousePosition.current.y * 0.5 - targetRotation.current.x) * 0.1;
-      targetRotation.current.y +=
-        (mousePosition.current.x * 0.5 - targetRotation.current.y) * 0.1;
+      if (!isDragging.current) {
+        // Auto-rotate when not being dragged
+        targetRotation.current.x +=
+          (mousePosition.current.y * 1.0 - targetRotation.current.x) * 0.05;
+        targetRotation.current.y +=
+          (mousePosition.current.x * 1.0 - targetRotation.current.y) * 0.05;
+      }
 
-      // Apply the rotation
+      // Apply the rotations
       latticeRef.current.rotation.x = targetRotation.current.x;
-      latticeRef.current.rotation.y += 0.003; // Keep a slight constant rotation
+      latticeRef.current.rotation.y =
+        targetRotation.current.y + (isDragging.current ? 0 : 0.003); // Only auto-rotate when not dragging
     }
   });
 
