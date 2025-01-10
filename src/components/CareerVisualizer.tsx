@@ -74,11 +74,11 @@ export function CareerVisualizer() {
             >
               <div
                 className={`w-5/12 ${
-                  index % 2 === 0 ? "pr-8 text-right" : "pl-8 text-left"
+                  index % 2 === 0 ? "pr-4 text-right" : "pl-4 text-left"
                 }`}
               >
                 <div
-                  className={`flex items-center gap-3 ${
+                  className={`flex items-center gap-2 ${
                     index % 2 === 0 ? "justify-end" : "justify-start"
                   } transition-transform duration-200 hover:scale-105 cursor-pointer`}
                   onClick={() => window.open(experience.link, "_blank")}
