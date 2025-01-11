@@ -1,10 +1,11 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 
 export function Header() {
   const navigation = [
     { name: "Home", href: "/" },
+    { name: "Projects", href: "/projects" },
     { name: "Blog", href: "/blog" },
+
     { name: "Resume", href: "/resume" },
   ];
 

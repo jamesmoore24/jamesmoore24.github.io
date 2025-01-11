@@ -1,80 +1,22 @@
 import React, { useState } from "react";
 import { format } from "date-fns";
 import ReactMarkdown from "react-markdown";
-import { purerecall } from "../blog/purerecall";
-
-// Authentication questions
-const authQuestions = [
-  {
-    question: "What is my sister's name?",
-    answer: "Kirana",
-  },
-  {
-    question: "What is my birthday? (MM/DD)",
-    answer: "05/10",
-  },
-];
+import * as projects from "../projects/index.ts";
 
 // Sample blog posts (you can replace these with your actual posts)
-const blogPosts = [purerecall];
+const workPosts = [
+  projects.purerecall,
+  projects.adversarial,
+  projects.structures,
+  projects.omniroute,
+  projects.stock_scraper,
+  projects.cv,
+  projects.fitlink,
+];
 
-export function Blog() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answer, setAnswer] = useState("");
-  const [selectedPost, setSelectedPost] = useState(blogPosts[0]);
+export function Projects() {
+  const [selectedPost, setSelectedPost] = useState(workPosts[0]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const handleAnswerSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (
-      answer.toLowerCase().trim() ===
-      authQuestions[currentQuestion].answer.toLowerCase()
-    ) {
-      if (currentQuestion === authQuestions.length - 1) {
-        setIsAuthenticated(true);
-      } else {
-        setCurrentQuestion(currentQuestion + 1);
-      }
-      setAnswer("");
-    } else {
-      alert("Incorrect answer. Please try again.");
-      setAnswer("");
-    }
-  };
-
-  if (!isAuthenticated) {
-    return (
-      <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
-        <div className="max-w-md w-full mx-auto p-6 bg-gray-800 rounded-lg shadow-xl">
-          <h2 className="text-2xl font-bold text-white mb-6 text-center">
-            Authentication Required
-          </h2>
-          <form onSubmit={handleAnswerSubmit} className="space-y-4">
-            <div>
-              <label className="block text-gray-300 mb-2">
-                {authQuestions[currentQuestion].question}
-              </label>
-              <input
-                type="text"
-                value={answer}
-                onChange={(e) => setAnswer(e.target.value)}
-                className="w-full px-4 py-2 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
-                placeholder="Your answer"
-                autoFocus
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full py-2 px-4 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors"
-            >
-              Submit
-            </button>
-          </form>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-[calc(100vh-4rem)] relative">
@@ -111,17 +53,17 @@ export function Blog() {
             }`}
           >
             <div className="bg-gray-800 rounded-lg p-4 h-full overflow-y-auto">
-              <h2 className="text-xl font-bold text-white mb-4">Blog Posts</h2>
+              <h2 className="text-xl font-bold text-white mb-4">Work</h2>
               <div className="space-y-2">
-                {blogPosts.map((post) => (
+                {workPosts.map((post, ix) => (
                   <button
-                    key={post.id}
+                    key={ix}
                     onClick={() => {
                       setSelectedPost(post);
                       setIsSidebarOpen(false);
                     }}
                     className={`w-full text-left p-2 rounded transition-colors ${
-                      selectedPost.id === post.id
+                      selectedPost.title === post.title
                         ? "bg-purple-600 text-white"
                         : "text-gray-300 hover:bg-gray-700"
                     }`}

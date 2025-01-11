@@ -54,8 +54,8 @@ const experiences = [
 export function CareerVisualizer() {
   return (
     <div
-      className="w-full max-w-xl mx-auto opacity-0 animate-fade-in"
-      style={{ animationDelay: "1200ms", animationFillMode: "forwards" }}
+      className="w-full max-w-xl mx-auto opacity-0 animate-slide-up"
+      style={{ animationDelay: "1300ms", animationFillMode: "forwards" }}
     >
       <div className="relative py-4">
         {/* Timeline line */}
