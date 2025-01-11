@@ -20,8 +20,16 @@ export default defineConfig({
   build: {
     outDir: "docs",
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          mermaid: ["mermaid"],
+        },
+      },
+    },
   },
   optimizeDeps: {
     exclude: ["lucide-react"],
+    include: ["mermaid"],
   },
 });
