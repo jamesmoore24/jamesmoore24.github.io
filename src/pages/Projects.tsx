@@ -1,22 +1,30 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import ReactMarkdown from "react-markdown";
+import mermaid from "mermaid";
 import * as projects from "../projects/index.ts";
+import { ProjectPost } from "../types.ts";
+
+// Initialize mermaid
+mermaid.initialize({
+  startOnLoad: true,
+  theme: "dark",
+  securityLevel: "loose",
+  fontFamily:
+    'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif',
+});
 
 // Sample blog posts (you can replace these with your actual posts)
-const workPosts = [
-  projects.purerecall,
-  projects.adversarial,
-  projects.structures,
-  projects.omniroute,
-  projects.stock_scraper,
-  projects.cv,
-  projects.fitlink,
-];
+const workPosts: ProjectPost[] = [projects.purerecall];
 
 export function Projects() {
   const [selectedPost, setSelectedPost] = useState(workPosts[0]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  // Re-render mermaid diagrams when content changes
+  useEffect(() => {
+    mermaid.contentLoaded();
+  }, [selectedPost]);
 
   return (
     <div className="min-h-[calc(100vh-4rem)] relative">
@@ -53,7 +61,7 @@ export function Projects() {
             }`}
           >
             <div className="bg-gray-800 rounded-lg p-4 h-full overflow-y-auto">
-              <h2 className="text-xl font-bold text-white mb-4">Work</h2>
+              <h2 className="text-xl font-bold text-white mb-4">Projects</h2>
               <div className="space-y-2">
                 {workPosts.map((post, ix) => (
                   <button
@@ -95,7 +103,29 @@ export function Projects() {
               <div className="text-gray-400 mb-8">
                 {format(selectedPost.date, "MMMM d, yyyy")}
               </div>
-              <ReactMarkdown>{selectedPost.content}</ReactMarkdown>
+              {selectedPost.video && (
+                <div className="relative pb-[56.25%] h-0 mb-8 rounded-lg overflow-hidden">
+                  <iframe
+                    src={selectedPost.video}
+                    className="absolute top-0 left-0 w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              )}
+              {selectedPost.content.map((content, ix) => (
+                <div key={ix} className="mb-8">
+                  <ReactMarkdown>{`${"#".repeat(ix + 1)} ${
+                    content.title
+                  }`}</ReactMarkdown>
+                  {content.diagram && (
+                    <div className="mb-4 bg-gray-900 p-4 rounded-lg">
+                      <pre className="mermaid">{content.diagram}</pre>
+                    </div>
+                  )}
+                  <ReactMarkdown>{content.markdown}</ReactMarkdown>
+                </div>
+              ))}
             </div>
           </div>
         </div>

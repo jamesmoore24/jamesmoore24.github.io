@@ -50,7 +50,7 @@ export function Home() {
             className="max-w-2xl mx-auto text-sm md:text-lg text-center text-gray-300 px-4 opacity-0 animate-fade-in mt-4 px-6 py-2 bg-purple-600 text-white font-semibold rounded-lg transition-colors hover:bg-purple-700"
             style={{ animationDelay: "1200ms", animationFillMode: "forwards" }}
           >
-            See my projects :)
+            See my projects here
           </button>
         </div>
 

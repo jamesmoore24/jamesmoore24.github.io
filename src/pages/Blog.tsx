@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { format } from "date-fns";
 import ReactMarkdown from "react-markdown";
-import { purerecall } from "../blog/purerecall";
+import { ProjectPost } from "../types";
 
 // Authentication questions
 const authQuestions = [
@@ -16,7 +16,7 @@ const authQuestions = [
 ];
 
 // Sample blog posts (you can replace these with your actual posts)
-const blogPosts = [purerecall];
+const blogPosts: ProjectPost[] = [];
 
 export function Blog() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -153,7 +153,26 @@ export function Blog() {
               <div className="text-gray-400 mb-8">
                 {format(selectedPost.date, "MMMM d, yyyy")}
               </div>
-              <ReactMarkdown>{selectedPost.content}</ReactMarkdown>
+              {selectedPost.video && (
+                <div className="relative pb-[56.25%] h-0 mb-8 rounded-lg overflow-hidden">
+                  <iframe
+                    src={selectedPost.video}
+                    className="absolute top-0 left-0 w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              )}
+              {selectedPost.content.map((content, ix) => (
+                <div key={ix} className="mb-8">
+                  {content.diagram && (
+                    <div className="mb-4 bg-gray-900 p-4 rounded-lg">
+                      <pre className="mermaid">{content.diagram}</pre>
+                    </div>
+                  )}
+                  <ReactMarkdown>{content.markdown}</ReactMarkdown>
+                </div>
+              ))}
             </div>
           </div>
         </div>
