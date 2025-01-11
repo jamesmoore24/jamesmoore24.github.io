@@ -261,33 +261,32 @@ This distributed framework was also applied to the search feature were we distri
       title: "Search Accuracy",
       header: 3,
       diagram: `graph TD
-        subgraph Transcript Processing
-          T[Raw Transcript] --> C[Chunk Text]
-          C --> KE[Keyword Extraction]
-          C --> TE[Topic Extraction] 
-          KE --> K[Keywords]
-          TE --> TOP[Topics]
-        end
+    subgraph Transcript Processing
+        T[Raw Transcript] --> C[Chunk Text]
+        C --> KE[Keyword Extraction]
+        C --> TE[Topic Extraction] 
+        KE --> K[Keywords]
+        TE --> TOP[Topics]
+    end
 
-        subgraph Search Processing
-          Q[Search Query] --> QKE[Query Keyword Extraction]
-          Q --> QTE[Query Topic Extraction]
-          QKE --> QK[Query Keywords]
-          QTE --> QT[Query Topics]
-        end
+    subgraph Search Processing
+        Q[Search Query] --> QKE[Query Keyword Extraction]
+        Q --> QTE[Query Topic Extraction]
+        QKE --> QK[Query Keywords]
+        QTE --> QT[Query Topics]
+    end
 
-        K --> CS[Cosine Similarity Comparison]
-        TOP --> CS
-        QK --> CS
-        QT --> CS
-        CS --> R[Relevant Chunks]`,
+    K --> CS[Cosine Similarity Comparison]
+    TOP --> CS
+    QK --> CS
+    QT --> CS
+    CS --> R[Relevant Chunks]`,
       markdown: `We observed that just comparing the raw transcript text to the search query was not enough to get good results. Thus there needed to be a way to relate the transcript text to the search query.
 This was a non-trivial problem since we had to find a way that used the least amount of tokens when embedding (for cost reasons) but also had to be able to capture the most relevant information of the transcript chunk.
 
 We found that using the single word/phrase keywords and topics as a way to relate the transcript text to the search query was the best way to do this.
 This was related to the way that we were using our search. Either we were searching for proper nouns which were unique single words or phrases (NotebookLM, Hubspot, etc.) or we were searching for high level topic concepts (relevant action items, meeting minutes, sales meetings, etc.).
-This allowed us to produce an abstraction layer above the raw transcript that allowed us to search for the most relevant parts of the meeting in a way that was both accurate and efficient.
-      `,
+This allowed us to produce an abstraction layer above the raw transcript that allowed us to search for the most relevant parts of the meeting in a way that was both accurate and efficient.`,
     },
     {
       title: "Future Work",

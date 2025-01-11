@@ -115,7 +115,7 @@ export function Projects() {
               )}
               {selectedPost.content.map((content, ix) => (
                 <div key={ix} className="mb-8">
-                  <ReactMarkdown>{`${"#".repeat(ix + 1)} ${
+                  <ReactMarkdown>{`${"#".repeat(content.header)} ${
                     content.title
                   }`}</ReactMarkdown>
                   {content.diagram && (
