@@ -1,21 +1,22 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { writeFile } from "fs/promises";
+import { writeFile, copyFile } from "fs/promises";
 import type { Plugin } from "vite";
 
-// Custom plugin to generate CNAME file
-const generateCNAME = (): Plugin => {
+// Custom plugin to generate CNAME file and copy 404.html
+const generateFiles = (): Plugin => {
   return {
-    name: "generate-cname",
+    name: "generate-files",
     closeBundle: async () => {
       await writeFile("docs/CNAME", "jmoore.info");
+      await copyFile("public/404.html", "docs/404.html");
     },
   };
 };
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), generateCNAME()],
+  plugins: [react(), generateFiles()],
   base: "./",
   build: {
     outDir: "docs",
