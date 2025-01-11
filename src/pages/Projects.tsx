@@ -1,29 +1,35 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { format } from "date-fns";
 import ReactMarkdown from "react-markdown";
 import mermaid from "mermaid";
 import * as projects from "../projects/index.ts";
 import { ProjectPost } from "../types.ts";
 
-// Initialize mermaid
-mermaid.initialize({
-  startOnLoad: true,
-  theme: "dark",
-  securityLevel: "loose",
-  fontFamily:
-    'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif',
-});
-
-// Sample blog posts (you can replace these with your actual posts)
+// Sample blog posts
 const workPosts: ProjectPost[] = [projects.purerecall];
 
 export function Projects() {
   const [selectedPost, setSelectedPost] = useState(workPosts[0]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  // Initialize mermaid with configuration
+  useEffect(() => {
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "dark",
+      securityLevel: "loose",
+      fontFamily:
+        'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif',
+    });
+  }, []);
+
   // Re-render mermaid diagrams when content changes
   useEffect(() => {
-    mermaid.contentLoaded();
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      mermaid.contentLoaded();
+    }, 100);
+    return () => clearTimeout(timer);
   }, [selectedPost]);
 
   return (
@@ -119,7 +125,7 @@ export function Projects() {
                     content.title
                   }`}</ReactMarkdown>
                   {content.diagram && (
-                    <div className="mb-4 bg-gray-900 p-4 rounded-lg">
+                    <div className="mb-4 bg-gray-900 p-4 rounded-lg overflow-auto">
                       <pre className="mermaid">{content.diagram}</pre>
                     </div>
                   )}
