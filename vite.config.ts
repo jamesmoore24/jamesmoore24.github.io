@@ -23,14 +23,20 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       output: {
-        manualChunks: {
-          mermaid: ["mermaid"],
+        manualChunks: (id) => {
+          // Put all mermaid-related code into a single chunk
+          if (
+            id.includes("mermaid") ||
+            id.includes("_baseUniq") ||
+            id.includes("_basePickBy")
+          ) {
+            return "mermaid";
+          }
         },
       },
     },
   },
   optimizeDeps: {
-    exclude: ["lucide-react"],
     include: ["mermaid"],
   },
 });
