@@ -8,6 +8,13 @@ import MITSloanLogo from "/logos/mit_sloan.png";
 
 const experiences = [
   {
+    company: "Meta",
+    role: "Software Engineer",
+    period: "June 2025",
+    logo: MetaLogo,
+    link: "https://www.meta.com/",
+  },
+  {
     company: "Capital One",
     role: "Software Engineer Intern",
     period: "Jun 2024 - Aug 2024",
