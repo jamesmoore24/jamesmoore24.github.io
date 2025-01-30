@@ -6,12 +6,12 @@ import ProfilePicture from "/profile-picture.jpeg";
 
 export function Home() {
   return (
-    <div className="relative h-[calc(100vh-4rem)] overflow-hidden">
+    <div className="relative min-h-[calc(100vh-4rem)] md:h-[calc(100vh-4rem)] md:overflow-hidden">
       <div className="absolute inset-0">
         <LatticeBackground />
       </div>
 
-      <div className="h-full flex flex-col md:flex-row">
+      <div className="min-h-full flex flex-col md:flex-row">
         {/* Hero Section */}
         <div className="w-full md:flex-1 flex flex-col items-center justify-center space-y-4 py-4 md:py-8">
           <div
@@ -55,7 +55,7 @@ export function Home() {
         </div>
 
         {/* Career Section */}
-        <div className="w-full md:flex-1 flex items-center">
+        <div className="w-full md:flex-1 flex items-center py-8 md:py-0">
           <CareerVisualizer />
         </div>
       </div>
