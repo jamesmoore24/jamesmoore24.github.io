@@ -107,6 +107,13 @@ export function Projects() {
           {/* Main content */}
           <div className="flex-1 bg-gray-800 rounded-lg p-4 md:p-8">
             <div className="prose prose-invert max-w-none">
+              <div className="bg-gray-700 p-4 rounded-lg mb-8">
+                <p className="text-gray-300 italic">
+                  I'm currently in the process of transcribing my more recent
+                  projects. Please check my resume for more information about
+                  them.
+                </p>
+              </div>
               <h1 className="text-3xl font-bold text-white mb-2">
                 {selectedPost.title}
               </h1>
