@@ -22,7 +22,9 @@ export function Blog() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answer, setAnswer] = useState("");
-  const [selectedPost, setSelectedPost] = useState(blogPosts[0]);
+  const [selectedPost, setSelectedPost] = useState(
+    blogPosts.length > 0 ? blogPosts[0] : null
+  );
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleAnswerSubmit = (e: React.FormEvent) => {
@@ -121,7 +123,7 @@ export function Blog() {
                       setIsSidebarOpen(false);
                     }}
                     className={`w-full text-left p-2 rounded transition-colors ${
-                      selectedPost.id === post.id
+                      selectedPost?.id === post.id
                         ? "bg-purple-600 text-white"
                         : "text-gray-300 hover:bg-gray-700"
                     }`}
@@ -147,32 +149,40 @@ export function Blog() {
           {/* Main content */}
           <div className="flex-1 bg-gray-800 rounded-lg p-4 md:p-8">
             <div className="prose prose-invert max-w-none">
-              <h1 className="text-3xl font-bold text-white mb-2">
-                {selectedPost.title}
-              </h1>
-              <div className="text-gray-400 mb-8">
-                {format(selectedPost.date, "MMMM d, yyyy")}
-              </div>
-              {selectedPost.video && (
-                <div className="relative pb-[56.25%] h-0 mb-8 rounded-lg overflow-hidden">
-                  <iframe
-                    src={selectedPost.video}
-                    className="absolute top-0 left-0 w-full h-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
+              {!selectedPost ? (
+                <div className="text-center text-gray-400">
+                  <p>No blog posts available yet.</p>
                 </div>
-              )}
-              {selectedPost.content.map((content, ix) => (
-                <div key={ix} className="mb-8">
-                  {content.diagram && (
-                    <div className="mb-4 bg-gray-900 p-4 rounded-lg">
-                      <pre className="mermaid">{content.diagram}</pre>
+              ) : (
+                <>
+                  <h1 className="text-3xl font-bold text-white mb-2">
+                    {selectedPost.title}
+                  </h1>
+                  <div className="text-gray-400 mb-8">
+                    {format(selectedPost.date, "MMMM d, yyyy")}
+                  </div>
+                  {selectedPost.video && (
+                    <div className="relative pb-[56.25%] h-0 mb-8 rounded-lg overflow-hidden">
+                      <iframe
+                        src={selectedPost.video}
+                        className="absolute top-0 left-0 w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
                     </div>
                   )}
-                  <ReactMarkdown>{content.markdown}</ReactMarkdown>
-                </div>
-              ))}
+                  {selectedPost.content.map((content, ix) => (
+                    <div key={ix} className="mb-8">
+                      {content.diagram && (
+                        <div className="mb-4 bg-gray-900 p-4 rounded-lg">
+                          <pre className="mermaid">{content.diagram}</pre>
+                        </div>
+                      )}
+                      <ReactMarkdown>{content.markdown}</ReactMarkdown>
+                    </div>
+                  ))}
+                </>
+              )}
             </div>
           </div>
         </div>
