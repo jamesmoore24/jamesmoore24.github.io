@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "build:github": "rm -rf docs/* && next build && cp -r out/* docs/ && echo 'jmoore.info' > docs/CNAME",
+    "build:github": "rm -rf docs/* && next build && cp -r out/* docs/ && touch docs/.nojekyll && echo 'jmoore.info' > docs/CNAME",
     "start": "next start",
     "lint": "next lint"
   },
