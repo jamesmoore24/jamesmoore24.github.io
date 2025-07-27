@@ -43,7 +43,7 @@ export default function Work() {
                   rel="noopener noreferrer"
                   className="text-gray-700 hover:text-gray-900 underline decoration-gray-400 hover:decoration-gray-600 transition-colors"
                 >
-                  here's an overview of our joint work :)
+                  here&apos;s an overview of our joint work :)
                 </a>
               </p>
             </div>
@@ -82,7 +82,7 @@ export default function Work() {
               <p className="mt-2 leading-relaxed">
                 i used nlp to analyze directors of publicly traded companies and
                 assess whether their tech-savviness had an impact on the
-                company's financial performance.{" "}
+                company&apos;s financial performance.{" "}
                 <a
                   href="https://cisr.mit.edu/publication/2025_0301_SavvyBoardsUpdate_WeillWoernerBannerMoore"
                   target="_blank"

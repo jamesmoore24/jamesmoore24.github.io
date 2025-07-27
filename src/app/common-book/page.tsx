@@ -22,7 +22,7 @@ export default function CommonBook() {
                   rel="noopener noreferrer"
                   className="text-gray-700 hover:text-gray-900 underline decoration-gray-400 hover:decoration-gray-600 transition-colors"
                 >
-                  gabriel's career advice
+                  gabriel&apos;s career advice
                 </a>
               </p>
               <p className="text-gray-700 leading-relaxed">
@@ -52,7 +52,7 @@ export default function CommonBook() {
                   rel="noopener noreferrer"
                   className="text-gray-700 hover:text-gray-900 underline decoration-gray-400 hover:decoration-gray-600 transition-colors"
                 >
-                  hank green's commencement speech to the mit class of 2025
+                  hank green&apos;s commencement speech to the mit class of 2025
                 </a>
               </p>
               <p className="text-gray-700 leading-relaxed">
