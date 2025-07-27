@@ -11,23 +11,39 @@ export default function Work() {
 
           <div className="space-y-6">
             <div>
-              <h2 className="text-xl font-medium">meta (formerly facebook):</h2>
+              <h2 className="text-xl font-medium">meta (formerly facebook)</h2>
               <h3 className="text-lg font-medium mt-1">
                 machine learning engineer
               </h3>
               <p className="text-sm text-gray-600 italic mt-1">current</p>
               <p className="mt-2 leading-relaxed">
-                i help train and deploy machine translation and language
-                identification models on the pytorch ai translation team in
-                collaboration with fair to make the world a more connected
-                place.{" "}
+                i train and deploy machine translation and language
+                identification models on the{" "}
+                <a
+                  href="https://pytorch.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-700 hover:text-gray-900 underline decoration-gray-400 hover:decoration-gray-600 transition-colors"
+                >
+                  pytorch
+                </a>{" "}
+                ai translation team in collaboration with{" "}
+                <a
+                  href="https://ai.meta.com/research/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-700 hover:text-gray-900 underline decoration-gray-400 hover:decoration-gray-600 transition-colors"
+                >
+                  fair (ai at meta)
+                </a>
+                {". "}
                 <a
                   href="https://ai.meta.com/research/seamless-communication/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-700 hover:text-gray-900 underline decoration-gray-400 hover:decoration-gray-600 transition-colors"
                 >
-                  overview of our work
+                  here's an overview of our joint work :)
                 </a>
               </p>
             </div>
@@ -52,14 +68,13 @@ export default function Work() {
                 aug 2024 - dec 2024
               </p>
               <p className="mt-2 leading-relaxed">
-                i helped trained fraud detection models on their cyber security
-                team.
+                i trained fraud detection models on their cyber security team.
               </p>
             </div>
 
             <div>
               <h2 className="text-xl font-medium">
-                mit undergraduate research assistant:
+                mit undergraduate research assistant
               </h2>
               <p className="text-sm text-gray-600 italic mt-1">
                 feb 2024 - may 2024
@@ -81,19 +96,19 @@ export default function Work() {
 
             <div>
               <h2 className="text-xl font-medium">
-                mit eecs lab assistant and grader:
+                mit eecs lab assistant and grader
               </h2>
               <p className="text-sm text-gray-600 italic mt-1">
                 feb 2024 - may 2025
               </p>
               <p className="mt-2 leading-relaxed">
-                helped teach and grade for 6.390 machine learning and 6.380
+                i helped teach and grade for 6.390 machine learning and 6.380
                 inference.
               </p>
             </div>
 
             <div>
-              <h2 className="text-xl font-medium">mit student:</h2>
+              <h2 className="text-xl font-medium">mit student</h2>
               <p className="text-sm text-gray-600 italic mt-1">
                 aug 2021 - may 2025
               </p>
