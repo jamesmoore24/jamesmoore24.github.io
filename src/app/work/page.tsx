@@ -65,7 +65,7 @@ export default function Work() {
                 software engineering intern
               </h3>
               <p className="text-sm text-gray-600 italic mt-1">
-                aug 2024 - dec 2024
+                jun 2024 - aug 2024
               </p>
               <p className="mt-2 leading-relaxed">
                 i trained fraud detection models on their cyber security team.
@@ -96,7 +96,7 @@ export default function Work() {
 
             <div>
               <h2 className="text-xl font-medium">
-                mit eecs lab assistant and grader
+                mit eecs teaching assistant and grader
               </h2>
               <p className="text-sm text-gray-600 italic mt-1">
                 feb 2024 - may 2025
