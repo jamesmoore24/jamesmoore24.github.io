@@ -27,6 +27,16 @@ export default function CommonBook() {
               </p>
               <p className="text-gray-700 leading-relaxed">
                 <a
+                  href="https://augmentingcognition.com/ltm.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-700 hover:text-gray-900 underline decoration-gray-400 hover:decoration-gray-600 transition-colors"
+                >
+                  augmenting long term memory - michael nielsen
+                </a>
+              </p>
+              <p className="text-gray-700 leading-relaxed">
+                <a
                   href="https://www.youtube.com/watch?v=BSFNl4roGlI"
                   target="_blank"
                   rel="noopener noreferrer"
