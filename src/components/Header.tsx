@@ -28,7 +28,7 @@ export default function Header() {
                 href="/common-book"
                 className="relative group transition-colors hover:text-gray-900"
               >
-                common place book
+                commonplace book
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-700 transition-all duration-300 group-hover:w-full"></span>
               </Link>
             </li>
