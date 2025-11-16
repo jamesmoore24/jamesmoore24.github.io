@@ -25,7 +25,7 @@ export default function Thoughts() {
                       href="/thoughts/2"
                       className="hover:text-gray-600 transition-colors"
                     >
-                      Problem solving
+                      problem solving
                     </Link>
                   </h2>
                   <time className="text-sm text-gray-500 italic">
