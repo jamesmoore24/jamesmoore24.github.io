@@ -19,7 +19,7 @@ export default function ProblemSolvingPost() {
           <article className="space-y-8">
             <header className="space-y-4">
               <h1 className="text-4xl font-medium text-gray-800">
-                Problem solving
+                problem solving
               </h1>
               <time className="text-sm text-gray-500 italic block">
                 November 2025

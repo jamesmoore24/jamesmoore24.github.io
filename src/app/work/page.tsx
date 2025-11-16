@@ -17,8 +17,7 @@ export default function Work() {
               </h3>
               <p className="text-sm text-gray-600 italic mt-1">current</p>
               <p className="mt-2 leading-relaxed">
-                i train and deploy machine translation and language
-                identification models on the{" "}
+                i train and deploy language identification models on the{" "}
                 <a
                   href="https://pytorch.org/"
                   target="_blank"
@@ -36,15 +35,9 @@ export default function Work() {
                 >
                   fair (ai at meta)
                 </a>
-                {". "}
-                <a
-                  href="https://ai.meta.com/research/seamless-communication/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-700 hover:text-gray-900 underline decoration-gray-400 hover:decoration-gray-600 transition-colors"
-                >
-                  here&apos;s an overview of our joint work :)
-                </a>
+                {
+                  ". in my first ~5 months at meta, i was able to solve critical problems related to english recall and model quality. this resulted in the deployment of an improved language identification model which mitigated several major client issues across IG, FB, and GenAI and improved downstream system quality earning meta millions of dollars a year. "
+                }
               </p>
             </div>
 
@@ -68,7 +61,8 @@ export default function Work() {
                 jun 2024 - aug 2024
               </p>
               <p className="mt-2 leading-relaxed">
-                i trained fraud detection models on their cyber security team.
+                i used machine learning to help coordinate cyber security
+                efforts to keep customers safe.
               </p>
             </div>
 
