@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import { FaGithub, FaXTwitter } from "react-icons/fa6";
 import { HiMail } from "react-icons/hi";
-import { SiArxiv } from "react-icons/si";
+import { SiGooglescholar } from "react-icons/si";
 
 export default function Home() {
   return (
@@ -43,13 +43,13 @@ export default function Home() {
           </a>
 
           <a
-            href="https://arxiv.org/search/?searchtype=author&query=Moore%2C+J"
+            href="https://scholar.google.com/citations?user=gdUqlcoAAAAJ&hl=en"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 hover:text-gray-900 transition-colors"
-            aria-label="arXiv"
+            aria-label="Google Scholar"
           >
-            <SiArxiv size={32} />
+            <SiGooglescholar size={32} />
           </a>
         </div>
       </div>
