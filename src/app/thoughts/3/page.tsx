@@ -19,7 +19,7 @@ export default function ModelOptimizationPost() {
           <article className="space-y-8">
             <header className="space-y-4">
               <h1 className="text-4xl font-medium text-gray-800">
-                How to make models run faster
+                how to make models run faster
               </h1>
               <time className="text-sm text-gray-500 italic block">
                 December 2025
