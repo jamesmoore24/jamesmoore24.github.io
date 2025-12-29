@@ -20,7 +20,7 @@ export default function Thoughts() {
                       href="/thoughts/3"
                       className="hover:text-gray-600 transition-colors"
                     >
-                      How to make models run faster
+                      how to make models run faster
                     </Link>
                   </h2>
                   <time className="text-sm text-gray-500 italic">
