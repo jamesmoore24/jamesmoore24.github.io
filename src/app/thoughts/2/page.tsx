@@ -27,8 +27,8 @@ export default function ProblemSolvingPost() {
             </header>
 
             <div className="prose prose-gray max-w-none space-y-6">
-              <p className="text-lg leading-relaxed text-gray-700">
-                When approaching any problem I’ve noticed that progress follows
+              <p className="leading-relaxed text-gray-700">
+                When approaching any problem I&apos;ve noticed that progress follows
                 the{" "}
                 <a
                   href="https://en.wikipedia.org/wiki/Pareto_principle"
@@ -40,17 +40,17 @@ export default function ProblemSolvingPost() {
                 </a>
                 . The rule in this context states that 80% of the progress comes
                 from 20% of the time spent working (which implies that around
-                80% of the time you spend you’re essentially wasting). The funny
-                thing about trying to “bend” this curve is that the more
-                efficient you get at solving problems your previous “20%” effort
-                becomes the new “80%” of time wasted. I suspect that in the
+                80% of the time you spend you&apos;re essentially wasting). The funny
+                thing about trying to &quot;bend&quot; this curve is that the more
+                efficient you get at solving problems your previous &quot;20%&quot; effort
+                becomes the new &quot;80%&quot; of time wasted. I suspect that in the
                 limit this vanishes (100% of the time spent generates 100% of
                 the progress) but—in general—not all time spent working is
                 uniform.
               </p>
 
               <p className="leading-relaxed text-gray-700">
-                If you plot something like “intensity/focus/speed” on the x-axis
+                If you plot something like &quot;intensity/focus/speed&quot; on the x-axis
                 and amount of work completed it would look something like this:
               </p>
 
@@ -66,7 +66,7 @@ export default function ProblemSolvingPost() {
                   />
                 </div>
                 <figcaption className="mt-2 text-sm text-gray-500 text-center">
-                  Work completed vs. intensity/focus/speed — the “efficient 20%”
+                  Work completed vs. intensity/focus/speed — the &quot;efficient 20%&quot;
                   lives where the slope is steepest.
                 </figcaption>
               </figure>
@@ -79,10 +79,10 @@ export default function ProblemSolvingPost() {
               </p>
 
               <p className="leading-relaxed text-gray-700">
-                From what I’ve noticed in the past ~5 months at Meta I think
-                I’ve gotten better at identifying the things that generate this
+                From what I&apos;ve noticed in the past ~5 months at Meta I think
+                I&apos;ve gotten better at identifying the things that generate this
                 kind of work. All of the following must be present otherwise
-                high quality work (probably) won’t get done:
+                high quality work (probably) won&apos;t get done:
               </p>
 
               <h2 className="text-2xl font-medium text-gray-800 mt-8 mb-2">
@@ -90,10 +90,10 @@ export default function ProblemSolvingPost() {
               </h2>
               <p className="leading-relaxed text-gray-700">
                 Intent is the foundation for productivity. For example, if you
-                are solving a difficult problem and you don’t intend on giving
-                your best effort then you’re likely going to be uninterested in
+                are solving a difficult problem and you don&apos;t intend on giving
+                your best effort then you&apos;re likely going to be uninterested in
                 the problem or not appreciate the complexity. This seems simple
-                but I think for a majority of the time I’m not truly intending
+                but I think for a majority of the time I&apos;m not truly intending
                 on giving my true best effort for each problem. This may be good
                 because doing so may actually burn me out but I think being more
                 aware of my intent when approaching problems could be much
@@ -122,18 +122,18 @@ export default function ProblemSolvingPost() {
                 to work fast gives you a feeling of control over your machine
                 (in a non-maniacal way I promise) which makes you feel really
                 good! This means learning key binds for common operations (yes
-                I’m talking about vim) as they allow you to shorten the time
+                I&apos;m talking about vim) as they allow you to shorten the time
                 between idea and execution. Every second of delay between those
                 two results in fatigue and forgetting which is catastrophic when
-                you’re trying to set up important experiments, analyze data and
-                generate hypotheses. In a way, you’re always fighting against
+                you&apos;re trying to set up important experiments, analyze data and
+                generate hypotheses. In a way, you&apos;re always fighting against
                 forgetting crucial ideas and insights which means that speed is
                 the only way to counteract this force.
               </p>
 
               <p className="leading-relaxed text-gray-700">
                 I like to think about this in the lens of an airplane.
-                Technically a plane is always “falling” but it’s going too fast
+                Technically a plane is always &quot;falling&quot; but it&apos;s going too fast
                 to fall which is what makes it fly.
               </p>
 
@@ -142,17 +142,17 @@ export default function ProblemSolvingPost() {
               </h2>
               <p className="leading-relaxed text-gray-700">
                 I want to say that this is the <em>most</em> important, but the
-                others are all necessary. Maybe it’s just the caveman in me but
-                working towards a goal that’s achievable within the work block
+                others are all necessary. Maybe it&apos;s just the caveman in me but
+                working towards a goal that&apos;s achievable within the work block
                 vs. working with no real tangible goal are completely different
-                experiences. The former almost feels like I’m hunting for
-                something which is exhilarating while the latter feels like I’m
+                experiences. The former almost feels like I&apos;m hunting for
+                something which is exhilarating while the latter feels like I&apos;m
                 toiling away for no reason.
               </p>
               <p className="leading-relaxed text-gray-700">
                 This problem came up when I first started working because goals
-                became vague. There were no more “tests” or “assignments” to
-                complete. These “tests” and “assignments” now were problems that
+                became vague. There were no more &quot;tests&quot; or &quot;assignments&quot; to
+                complete. These &quot;tests&quot; and &quot;assignments&quot; now were problems that
                 spanned over months and months and were insurmountable within a
                 couple of days. At first I remember feeling aimless and confused
                 since I knew nothing about the tech stack and I had no real

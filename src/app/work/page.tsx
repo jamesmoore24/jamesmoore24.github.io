@@ -35,9 +35,19 @@ export default function Work() {
                 >
                   fair (ai at meta)
                 </a>
-                {
-                  ". in my first ~5 months at meta, i was able to solve critical problems related to english recall and model quality. this resulted in the deployment of an improved language identification model which mitigated several major client issues across IG, FB, and GenAI and improved downstream system quality earning meta millions of dollars a year. "
-                }
+                
+                  . i was able to solve critical problems related to english recall and general model quality. i was also able to improve the qps of our production deployment by 2.2x (with some help from the{" "}
+                  <a
+                    href="https://docs.pytorch.org/tutorials/intermediate/torch_compile_tutorial.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-700 hover:text-gray-900 underline decoration-gray-400 hover:decoration-gray-600 transition-colors"
+                  >
+                    humans who work on torch.compile
+                  </a>
+                  ){" "}
+                  which resulted in meta saving millions of dollars a year.
+                
               </p>
             </div>
 
@@ -74,7 +84,17 @@ export default function Work() {
                 feb 2024 - may 2024
               </p>
               <p className="mt-2 leading-relaxed">
-                i used nlp to analyze directors of publicly traded companies and
+                i used{" "}
+                <a
+                  href="https://en.wikipedia.org/wiki/Natural_language_processing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-700 hover:text-gray-900 underline decoration-gray-400 hover:decoration-gray-600 transition-colors"
+                >
+                  nlp (natural language processing)
+                </a>
+                {" "}
+                to analyze directors of publicly traded companies and
                 assess whether their tech-savviness had an impact on the
                 company&apos;s financial performance.{" "}
                 <a
@@ -107,7 +127,15 @@ export default function Work() {
                 aug 2021 - may 2025
               </p>
               <p className="mt-2 leading-relaxed">
-                learning from and having fun with brilliant people :)
+                learning from and having fun with{" "}
+                <a
+                  href="https://capd.mit.edu/blog/2021/09/07/profile-of-mits-class-of-2025/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-700 hover:text-gray-900 underline decoration-gray-400 hover:decoration-gray-600 transition-colors"
+                >
+                  brilliant people :)
+                </a>
               </p>
             </div>
           </div>
