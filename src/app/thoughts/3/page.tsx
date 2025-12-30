@@ -29,15 +29,15 @@ export default function ModelOptimizationPost() {
             <div className="prose prose-gray max-w-none space-y-6">
               <p className="leading-relaxed text-gray-700">
                 As part of my work at Meta I was given the (sorta) vague task
-                of &quot;improve this language identification model please.&quot; at
-                first i was pretty overwhelmed since I had never touched a
+                of &quot;improve this language identification model please.&quot; At
+                first I was pretty overwhelmed since I had never touched a
                 production model let alone a model that was queried as much as
                 this one across the company but (as any over-ambitious new
-                grad) I was determined to make it happen. Long story short i
+                grad) I was determined to make it happen. Long story short I
                 was able to fix some pretty serious problems regarding english
                 recall with the model which basically meant that obviously
                 english text wasn&apos;t being classified as some other language
-                anymore which is really good!
+                anymore which was really good!
               </p>
 
               <p className="leading-relaxed text-gray-700">
@@ -48,23 +48,23 @@ export default function ModelOptimizationPost() {
                 new internal framework so we were completely unaware of
                 any potential challenges that we could face. We sort of thought
                 that since our improved model had the roughly the same number
-                of parameters and architecture as our previous model that we
+                of parameters and architecture as our previous model we
                 would automatically have the same throughput in production. We
-                were wrong about that (lol). We had roughly 2.5x throughput
+                were wrong about that (lol). We had roughly 2.5x less throughput
                 than our previous deployment which meant that we couldn&apos;t
                 deploy our improvements at all!
               </p>
 
               <p className="leading-relaxed text-gray-700">
                 If you don&apos;t know what throughput means, what determines it and
-                why it&apos;s super-duper important to benchmarking performance here&apos;s a quick explanation:
+                why it&apos;s super-duper important to benchmarking performance, here&apos;s a quick explanation:
               </p>
 
               <p className="leading-relaxed text-gray-700">
-                Imagine your waiting in some line for pizza. Now what would you
+                Imagine you&apos;re waiting in some line for pizza. Now what would you
                 expect that the time it takes to go from entering the store to
                 actually getting the slice of pepperoni pizza (the best kind of
-                pizza) would depends on? Hmmm… you&apos;d probably guess it depends
+                pizza) would depend on? Hmmm… you&apos;d probably guess it depends
                 on the number of people in line, the number of cashiers taking
                 orders, how long each order takes, the number of chefs the
                 number of ovens, and then generally how fast each of the steps
@@ -123,7 +123,7 @@ export default function ModelOptimizationPost() {
               </p>
 
               <h2 className="text-2xl font-medium text-gray-800 mt-8 mb-2">
-                Technique #1: profiling!
+                Technique #1: Profiling!
               </h2>
               <p className="leading-relaxed text-gray-700">
                 How can we optimize something that we can&apos;t even see. It would
@@ -202,7 +202,7 @@ export default function ModelOptimizationPost() {
                 memories flashed-back to how compilers do things like pruning
                 syntax trees, unrolling loops and removing unnecessary
                 branching so that the code we write is optimized to run on the
-                machine we&apos;re using. In essence, torch.compile is trying to do
+                machine we&apos;re using. In essence, <code className="bg-gray-100 px-2 py-1 rounded text-sm">torch.compile</code> is trying to do
                 the same thing except that the &quot;code&quot; is a PyTorch model
                 defined by individual and nested modules and the machines we&apos;re
                 running on are (usually) GPUs. This results in a model that has
@@ -224,7 +224,7 @@ export default function ModelOptimizationPost() {
               <p className="leading-relaxed text-gray-700">
                 Usually this works for most models since the actual operations
                 which define most machine learning models are shared across
-                various types of models. torch.compile is really good at
+                various types of models. <code className="bg-gray-100 px-2 py-1 rounded text-sm">torch.compile</code> is really good at
                 spotting and taking advantage of these redundancies and
                 (generally) replaces multiple instructions with kernels that
                 are written to optimize the execution of those instructions on
@@ -244,7 +244,7 @@ export default function ModelOptimizationPost() {
               </p>
 
               <p className="leading-relaxed text-gray-700">
-                One quirk about using torch.compile is that it is NOT
+                One quirk about using <code className="bg-gray-100 px-2 py-1 rounded text-sm">torch.compile</code> is that it is NOT
                 thread-safe. Why is this an issue? Going back to the pizza
                 analogy now:
               </p>
@@ -277,9 +277,8 @@ export default function ModelOptimizationPost() {
 
               <p className="leading-relaxed text-gray-700">
                 The issue lies in the fact that the input to the model affects
-                how we run our model compilation during torch.compile. For our
-                purposes, we define the shape of our input as the number of
-                requests x the length of the requests. The shape of our input
+                how we run our model compilation during <code className="bg-gray-100 px-2 py-1 rounded text-sm">torch.compile</code>. For our
+                purposes, we define the shape of our input as the <code className="bg-gray-100 px-2 py-1 rounded text-sm">num_requests</code> x <code className="bg-gray-100 px-2 py-1 rounded text-sm">max([seq_len_1, seq_len_2, ...])</code>. The shape of our input
                 matters because different input sizes determine{" "}
                 <a
                   href="https://www.youtube.com/watch?v=UEdGJGz8Eyg"
@@ -310,7 +309,7 @@ export default function ModelOptimizationPost() {
               </p>
 
               <p className="leading-relaxed text-gray-700">
-                In some cases, torch.compile can&apos;t build a compiled version of
+                In some cases, <code className="bg-gray-100 px-2 py-1 rounded text-sm">torch.compile</code> can&apos;t build a compiled version of
                 your model for some set of input shapes (usually for{" "}
                 <a
                   href="https://pytorch.org/docs/stable/compile/programming_model.graph_breaks_index.html"
@@ -329,7 +328,7 @@ export default function ModelOptimizationPost() {
               <p className="leading-relaxed text-gray-700">
                 We had this exact problem with our custom-defined modules which
                 means that we had to copy our weights to a known HuggingFace
-                architecture which torch.compile worked on. Doing this led to a
+                architecture which <code className="bg-gray-100 px-2 py-1 rounded text-sm">torch.compile</code> worked on. Doing this led to a
                 2x improvement in QPS!
               </p>
 
@@ -340,7 +339,7 @@ export default function ModelOptimizationPost() {
                 The general flow of our model was this: input request,
                 tokenization, preprocessing into batches on the CPU, H2D
                 transfer to GPU, CPU covers the GPU while GPU executes
-                optimized torch.compile kernels, D2H transfer back to CPU, CPU
+                optimized <code className="bg-gray-100 px-2 py-1 rounded text-sm">torch.compile</code> kernels, D2H transfer back to CPU, CPU
                 postprocessing and result returned to client.
               </p>
 
@@ -375,7 +374,7 @@ export default function ModelOptimizationPost() {
                 preprocessing before it receives input for inference. By
                 specifying multiple threads for preprocessing and postprocessing
                 and locking the model during inference (mutex) we avoid issues
-                with multi-threaded torch.compiled model inference (explained
+                with multi-threaded <code className="bg-gray-100 px-2 py-1 rounded text-sm">torch.compile</code>d model inference (explained
                 above).
               </p>
 
@@ -393,7 +392,7 @@ export default function ModelOptimizationPost() {
               <p className="leading-relaxed text-gray-700">
                 Usually, in production grade systems we pad our input tensors
                 to some predefined <code className="bg-gray-100 px-2 py-1 rounded text-sm">max_seq_len</code> which
-                makes executing torch.compile since shapes are deterministic.
+                makes executing <code className="bg-gray-100 px-2 py-1 rounded text-sm">torch.compile</code> easier since shapes are deterministic.
                 However, depending on your model you could think of using
                 something called{" "}
                 <a
@@ -452,11 +451,11 @@ export default function ModelOptimizationPost() {
               <p className="leading-relaxed text-gray-700">
                 Model optimization is extremely fun because it can be
                 compressed into a game that you play against the model and its
-                varying input shapes. More generally, you&apos;re tring to answer the question: &quot;How far can I push QPS using my understanding of
+                varying input shapes. More generally, you&apos;re trying to answer the question: &quot;How far can I push QPS using my understanding of
                 the underlying hardware and the different interfaces made
                 available to me through PyTorch, Python and CUDA?&quot; Seeing
                 immediate performance gains after testing a hypothesis is a
-                feeling of excitement that feels like you solving a sudoku
+                feeling of excitement that feels like you&apos;re solving a sudoku
                 puzzle. It&apos;s a fun game to play and I highly recommend you try optimizing your models!
               </p>
 
