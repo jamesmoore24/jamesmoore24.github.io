@@ -47,7 +47,7 @@ export default function ModelOptimizationPost() {
                 to production? As is normal at Meta we were deploying on a
                 new internal framework so we were completely unaware of
                 any potential challenges that we could face. We sort of thought
-                that since our improved model had the roughly the same number
+                that since our improved model had roughly the same number
                 of parameters and architecture as our previous model we
                 would automatically have the same throughput in production. We
                 were wrong about that (lol). We had roughly 2.5x less throughput
@@ -126,7 +126,7 @@ export default function ModelOptimizationPost() {
                 Technique #1: Profiling!
               </h2>
               <p className="leading-relaxed text-gray-700">
-                How can we optimize something that we can&apos;t even see. It would
+                How can we optimize something that we can&apos;t even see? It would
                 be really nice to track where a single request goes in order to
                 understand the different transformations it undergoes until it
                 comes out the other end of our system as a language prediction!
@@ -453,10 +453,15 @@ export default function ModelOptimizationPost() {
                 compressed into a game that you play against the model and its
                 varying input shapes. More generally, you&apos;re trying to answer the question: &quot;How far can I push QPS using my understanding of
                 the underlying hardware and the different interfaces made
-                available to me through PyTorch, Python and CUDA?&quot; Seeing
+                available to me through PyTorch, Python and CUDA?&quot;. Seeing
                 immediate performance gains after testing a hypothesis is a
                 feeling of excitement that feels like you&apos;re solving a sudoku
                 puzzle. It&apos;s a fun game to play and I highly recommend you try optimizing your models!
+              </p>
+
+              <p className="leading-relaxed text-gray-700">
+                I think it is important to note that this field goes a lot deeper than the aforementioned techniques and I didn&apos;t even
+                touch on topics like quantization, pruning, distillation, etc.
               </p>
 
               <p className="leading-relaxed text-gray-700">
