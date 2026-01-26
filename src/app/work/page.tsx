@@ -17,62 +17,7 @@ export default function Work() {
               </h3>
               <p className="text-sm text-gray-600 italic mt-1">current</p>
               <p className="mt-2 leading-relaxed">
-                i train and deploy language identification models on the{" "}
-                <a
-                  href="https://pytorch.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-700 hover:text-gray-900 underline decoration-gray-400 hover:decoration-gray-600 transition-colors"
-                >
-                  pytorch
-                </a>{" "}
-                ai translation team in collaboration with{" "}
-                <a
-                  href="https://ai.meta.com/research/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-700 hover:text-gray-900 underline decoration-gray-400 hover:decoration-gray-600 transition-colors"
-                >
-                  fair (ai at meta)
-                </a>
-                
-                  . i was able to solve critical problems related to english recall and general model quality. i was also able to improve the qps of our production deployment by 2.2x (with some help from the{" "}
-                  <a
-                    href="https://docs.pytorch.org/tutorials/intermediate/torch_compile_tutorial.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-700 hover:text-gray-900 underline decoration-gray-400 hover:decoration-gray-600 transition-colors"
-                  >
-                    humans who work on torch.compile
-                  </a>
-                  ){" "}
-                  which resulted in meta saving millions of dollars a year.
-                
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-xl font-medium">anystudent</h2>
-              <h3 className="text-lg font-medium mt-1">co-founder</h3>
-              <p className="text-sm text-gray-600 italic mt-1">
-                aug 2024 - dec 2024
-              </p>
-              <p className="mt-2 leading-relaxed">
-                i built tools to help teachers use ai to teach more effectively.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-xl font-medium">capital one</h2>
-              <h3 className="text-lg font-medium mt-1">
-                software engineering intern
-              </h3>
-              <p className="text-sm text-gray-600 italic mt-1">
-                jun 2024 - aug 2024
-              </p>
-              <p className="mt-2 leading-relaxed">
-                i used machine learning to help coordinate cyber security
-                efforts to keep customers safe.
+                i research, train and deploy foundation language models :)
               </p>
             </div>
 
