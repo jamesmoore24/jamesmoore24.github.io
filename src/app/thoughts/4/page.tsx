@@ -27,11 +27,11 @@ export default function GinkgoHaiku() {
 
             <div className="prose prose-gray max-w-none space-y-6">
               <div className="text-center py-12">
-                <pre className="font-noto-serif text-2xl leading-relaxed text-gray-800 inline-block text-left">
-{`the light glimmers through
-the leaves of the ginkgo tree
-the brisk breeze pierces`}
-                </pre>
+                <p className="leading-relaxed text-gray-700">
+                  the light glimmers through<br />
+                  the leaves of the ginkgo tree<br />
+                  the brisk breeze pierces
+                </p>
               </div>
             </div>
           </article>
