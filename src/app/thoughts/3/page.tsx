@@ -16,7 +16,7 @@ export default function ModelOptimizationPost() {
             ← back to thoughts
           </Link>
 
-          <article className="space-y-8">
+          <article className="space-y-8 mt-4">
             <header className="space-y-4">
               <h1 className="text-4xl font-medium text-gray-800">
                 how to make models run faster

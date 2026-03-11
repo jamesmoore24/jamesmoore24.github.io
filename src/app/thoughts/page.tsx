@@ -12,6 +12,23 @@ export default function Thoughts() {
 
           <div className="space-y-6">
             <div className="space-y-12">
+              {/* Haiku: Ginkgo */}
+              <article className="border-l-4 border-gray-300 pl-6 py-6">
+                <header className="mb-6">
+                  <h2 className="text-3xl font-medium text-gray-800 mb-2">
+                    <Link
+                      href="/thoughts/4"
+                      className="hover:text-gray-600 transition-colors"
+                    >
+                      ginkgo haiku
+                    </Link>
+                  </h2>
+                  <time className="text-sm text-gray-500 italic">
+                    March 2026
+                  </time>
+                </header>
+              </article>
+
               {/* Blog Post: How to make models run faster */}
               <article className="border-l-4 border-gray-300 pl-6 py-6">
                 <header className="mb-6">

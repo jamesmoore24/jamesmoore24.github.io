@@ -22,6 +22,17 @@ export default function Work() {
             </div>
 
             <div>
+              <h2 className="text-xl font-medium">treegpt</h2>
+              <p className="text-sm text-gray-600 italic mt-1">
+                jan 2025 - may 2025
+              </p>
+              <p className="mt-2 leading-relaxed">
+                made an open source app and got it up to 100k+ maus (monthly
+                active users).
+              </p>
+            </div>
+
+            <div>
               <h2 className="text-xl font-medium">
                 mit undergraduate research assistant
               </h2>
