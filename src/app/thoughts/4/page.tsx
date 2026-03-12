@@ -26,7 +26,7 @@ export default function GinkgoHaiku() {
             </header>
 
             <div className="prose prose-gray max-w-none space-y-6">
-              <div className="text-center py-12">
+              <div className="py-12">
                 <p className="leading-relaxed text-gray-700">
                   the light glimmers through<br />
                   the leaves of the ginkgo tree<br />
